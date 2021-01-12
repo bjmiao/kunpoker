@@ -1,0 +1,10 @@
+
+# pycache
+__pycache__/
+
+# vscode studd
+.vscode/
+
+
+# Log 
+*.log
