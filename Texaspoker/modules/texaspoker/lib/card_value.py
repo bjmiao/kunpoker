@@ -1,6 +1,8 @@
 import random
 from itertools import combinations
+import functools
 import time
+import pickle
 
 COLOR = ['C', 'D', 'H', 'S']
 NUM = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
@@ -104,17 +106,17 @@ def judge_card_level(card_list):
 
     level = -1
     if (is_flush and is_straight and straight_max == 12):
-        level = (9, 12)   # royal flush straight
+        level = (9, [12])   # royal flush straight
     elif (is_flush and is_straight):
         level = (8, [straight_max])   # flush straight
     elif (card_type[0][0] == 4):
-        level = (7, [card_type[0][1], ])  # 4 of one
+        level = (7, [x[1] for x in card_type])  # 4 of one
     elif (card_type[0][0] == 3 and card_type[1][0] == 2):
-        level = (6, [card_type[0][1], ])   # full house
+        level = (6, [x[1] for x in card_type])   # full house
     elif (is_flush):
         level = (5, [x[1] for x in card_type])   # flush
     elif (is_straight):
-        level = (4, straight_max)  # straight
+        level = (4, [straight_max])  # straight
     elif (card_type[0][0] == 3 and card_type[1][0] == 1):
         level = (3, [x[1] for x in card_type])  # 3 of one
     elif (card_type[0][0] == 2 and card_type[1][0] == 2):
@@ -142,7 +144,7 @@ def compare_level(l1, l2):
 
 def encoding(card):
     # for card in cards:
-    a = 0 ^ (1 << card[0]) ^ (1 << card[1]) ^ (1 << card[2]) ^ (1 << card[3]) ^ (1 << card[4])
+    a = 0 ^ (1 << card[0]) | (1 << card[1]) | (1 << card[2]) | (1 << card[3]) | (1 << card[4])
     # print(type(a))
     return a
 
@@ -174,8 +176,7 @@ if __name__ == "__main__":
     # print(end - start,'s')
 
     index = 0
-    lookup_table = {}
-    level_table = [[] for _ in range(9)]
+    level_table = [[] for _ in range(10)]
     for cards in combinations(range(52), 5):
         # print('===')
         # print(cards)
@@ -186,13 +187,38 @@ if __name__ == "__main__":
         # print('!!!')
         # print(level, desc)
 
-        level_table[level].append((encoding(cards), (level,desc) ))
+        level_table[level].append((encoding(cards), (level, desc) ))
         index += 1
         if (index % 10000 == 0):
             print(index)
+        # if index == 100000:
         #     break
+
+    strength_table_in_level = []
+
+    last_hand_strength = level_table[0][0]
+    print(last_hand_strength)
+    idx_cnt = 0
+    level_cnt = 0
     for idx in range(len(level_table)):
-        print(len(level_table[idx]))
+        level_table[idx] = sorted(level_table[idx], key=functools.cmp_to_key(compare_level))
+        print(idx, len(level_table[idx]))
+
+        for (hand_id, hand) in level_table[idx]:
+            if compare_level(hand, last_hand_strength) != 0:
+                level_cnt = idx_cnt
+                last_hand_strength = hand
+            strength_table_in_level.append((hand_id, level_cnt))
+            idx_cnt += 1
+    total_len = len(strength_table_in_level)
+    print(len(strength_table_in_level))
+    print(strength_table_in_level[-1][-1]/total_len)
+
+    lookup_table = {x[0]:x[1] for x in strength_table_in_level}
+
+    with open("lookup_table.pkl", "wb") as f:
+        pickle.dump(lookup_table, f)
+
     # print(level_table)
     # print(lookup_table)
     # l1 = judge_card_level(cards)
