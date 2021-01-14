@@ -17,3 +17,22 @@ Initialized for Ubiquant Texas Hold'em poker championship.
   决策：
 
 # 20210113
+
+From MBJ:
+
+I completed the lookup table. Usage:
+
+``` bash
+cd modules/texaspoker/lib
+python card_value.py  # this is used to construct the lookup table
+
+# this should generate a `lookup_table.pkl` in that directory
+
+python read_lookup_table.py  # this is a demo on how to use this lookup table
+```
+
+Also, read the code `read_lookup_table.p` to see how to use the lookup table.
+
+The larger the value is, the stronger the the card is.
+ 
+
