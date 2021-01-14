@@ -128,7 +128,6 @@ def judge_card_level(card_list):
 
     # print(level)
     return level
-    
 
 def compare_level(l1, l2):
     if (l1[0] < l2[0]):
