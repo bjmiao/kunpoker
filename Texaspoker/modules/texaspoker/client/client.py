@@ -39,14 +39,17 @@ from lib.simple_logger import simple_logger
 
 
 # **************************************modify here to use your own AI! ***************************
-from AI.v1_1 import ai
+# from AI.v1_0 import ai as ai_1_0
+from AI.v1_1 import ai as ai_1_1
+from AI.v1_2 import ai as ai_1_2
+
 # *************************************************************************************************
 
 
 
 # **************************************modify here to set address and port ***********************
 address = '47.103.23.116'
-port = 
+port = 56713
 # *************************************************************************************************
 
 
@@ -367,10 +370,23 @@ class ClientJob(object):
 if __name__ == '__main__':
 # ************************************ modify here to use your own username! ***********************
 
-    if len(sys.argv) == 1:
+    if len(sys.argv) < 2:
         print('Error: enter the name for the client!')
+        print('Usage: client.py usename ai_version')
+        exit()
     username = sys.argv[1]
     # username = "myusername"
+
+    ai_str = sys.argv[2]
+    if (ai_str == '1.0'):
+        ai = ai_1_0
+    elif (ai_str == '1.1'):
+        ai = ai_1_1
+    elif (ai_str == '1.2'):
+        ai = ai_1_2
+    else:
+        raise NotImplementedError
+
     logger = simple_logger()
 # ****************************************************************************************************
 
