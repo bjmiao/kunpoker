@@ -16,6 +16,18 @@ def card2id(card):
     num = card[1]
     return NUM.index(num) * 4 + COLOR.index(color)
 
+def aka_pair(cards_id):
+    assert(len(cards_id)==2)
+    colors = [id2color(card) for card in cards_id]
+    nums = sorted([id2num(card) for card in cards_id],reverse=True)
+    aka = f'{NUM[nums[0]]}{NUM[nums[1]]}'
+    if nums[0] == nums[1]:
+        return aka+'p'
+    if colors[0] == colors[1]:    
+        return aka+'s'
+    else:
+        return aka+'o'
+    
 
 # alter the card id into color
 def id2color(card):
@@ -177,15 +189,14 @@ if __name__ == "__main__":
     index = 0
     level_table = [[] for _ in range(10)]
     for cards in combinations(range(52), 5):
+        cards = sorted(cards)
         # print('===')
         # print(cards)
         # print([id2card(i) for i in cards])
         # print(encoding(cards), judge_card_level(cards))
-
         (level, desc) = judge_card_level(cards)
         # print('!!!')
         # print(level, desc)
-
         level_table[level].append((encoding(cards), (level, desc) ))
         index += 1
         if (index % 10000 == 0):

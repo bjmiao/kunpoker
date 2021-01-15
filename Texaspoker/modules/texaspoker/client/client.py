@@ -1,10 +1,11 @@
+import argparse
+import os
 import sys
 import threading
-import grpc
-import sys
-from  pathlib import Path
 import time
-import os
+from pathlib import Path
+
+import grpc
 
 # **************************************modify here to add syspath if you need. ***************************
 _current_root = str(Path(__file__).resolve().parents[1])
@@ -21,27 +22,23 @@ ISTESTING = False
 # *********************modify here to change import path if you need ***********************
 import communicate.dealer_pb2 as dealer_pb2
 import communicate.dealer_pb2_grpc as rpc
-from lib.client_lib import State
-from lib.client_lib import Player
-from lib.client_lib import MessageType_HeartBeat
-from lib.client_lib import MessageType_StateUpdate
-from lib.client_lib import MessageType_GameDecision
-from lib.client_lib import MessageType_StateControl
-from lib.client_lib import MessageType_ClientInit
-from lib.client_lib import MessageType_GameOver
-from lib.client_lib import MessageType_InvalidToken
-from lib.client_lib import MessageType_GameStarted
-from lib.client_lib import MessageType_IllegalDecision
+from lib.client_lib import (MessageType_ClientInit, MessageType_GameDecision,
+                            MessageType_GameOver, MessageType_GameStarted,
+                            MessageType_HeartBeat, MessageType_IllegalDecision,
+                            MessageType_InvalidToken, MessageType_StateControl,
+                            MessageType_StateUpdate, Player, State)
 from lib.simple_logger import simple_logger
-# *******************************************************************************************
-
-
-
 
 # **************************************modify here to use your own AI! ***************************
 # from AI.v1_0 import ai as ai_1_0
 from AI.v1_1 import ai as ai_1_1
-from AI.v1_2 import ai as ai_1_2
+from AI.v1_all_in import ai as ai_allin
+from AI.v1_giveup import ai as ai_giveup
+from AI.v2 import ai as ai_2
+# *******************************************************************************************
+
+
+
 
 # *************************************************************************************************
 
@@ -171,6 +168,7 @@ class Client(object):
                 # server asking for a decision from the client
                 self.state.currpos = res.pos
                 if res.pos == self.mypos:
+                    ## only my turn to work?
                     decision = self.ai(self.mypos, self.state)
                     if not decision.isValid():
                         self.logger.info('$$$ This client made a invalid decision')
@@ -365,25 +363,35 @@ class ClientJob(object):
 # You should make sure that your username is unique and can only contain letters, numbers and '_'.
 # You should never keep more than one connection to the server at the same time.
 #******************************************************************************
-
+def parse_arg():
+    parse = argparse.ArgumentParser()
+    parse.add_argument('-a','--ai',dest='ai',action='store',help='set ai',default='1.1')
+    parse.add_argument('-u','--user',dest='user',action='store',help='set username')
+    args = parse.parse_args()
+    return args
 
 if __name__ == '__main__':
 # ************************************ modify here to use your own username! ***********************
-
-    if len(sys.argv) < 2:
-        print('Error: enter the name for the client!')
-        print('Usage: client.py usename ai_version')
-        exit()
-    username = sys.argv[1]
+    args = parse_arg()
+    username = args.user
+    ai_str = args.ai
+    
+    # if len(sys.argv) < 2:
+    #     print('Error: enter the name for the client!')
+    #     print('Usage: client.py usename ai_version')
+    #     exit()
+    # username = sys.argv[1]
     # username = "myusername"
 
-    ai_str = sys.argv[2]
-    if (ai_str == '1.0'):
-        ai = ai_1_0
-    elif (ai_str == '1.1'):
+    #ai_str = sys.argv[2]
+    if (ai_str == '1.1'):
         ai = ai_1_1
-    elif (ai_str == '1.2'):
-        ai = ai_1_2
+    elif (ai_str == 'allin'):
+        ai = ai_allin
+    elif (ai_str == 'giveup'):
+        ai = ai_giveup
+    elif (ai_str == '2'):
+        ai = ai_2
     else:
         raise NotImplementedError
 
@@ -392,7 +400,7 @@ if __name__ == '__main__':
 
 
 # ************************************ modify here to use your own AI! ********************************
-
+    print(f'Using {ai_str}')
     c = Client(username, ai, logger)
     ClientJob(c).run()
 

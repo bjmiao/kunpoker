@@ -31,8 +31,20 @@ python card_value.py  # this is used to construct the lookup table
 python read_lookup_table.py  # this is a demo on how to use this lookup table
 ```
 
-Also, read the code `read_lookup_table.p` to see how to use the lookup table.
+Also, read the code `read_lookup_table.py` to see how to use the lookup table.
 
 The larger the value is, the stronger the the card is.
  
+# 20210115
+From zgong:
+
+1. 修改client.py 使用-u 制定用户名 -a 指定使用的ai
+2. 初代ai_v2:
+  - 发牌圈采用牌力打法,大牌raise,中牌limp，小牌fold,较紧。牌力分级见表('AAp','ATs','78o',表示成对，同花，非同花)
+  - 翻牌，河牌，转牌 均使用较粗糙的胜率 蒙特卡洛(偏高) 
+  - 按照胜率计算期望估计作决策，没有作牌力平衡
+
+## 可修改方向
+1. 根据对手行为，估计牌力范围，修正蒙特卡洛结果，提高读牌能力
+2. 修正raise行为，加入随机数 对牌力作平衡
 
