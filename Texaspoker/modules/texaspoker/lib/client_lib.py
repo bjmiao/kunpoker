@@ -367,10 +367,10 @@ class State(object):
     def set_user_money(self, initMoney):
         for i in range(self.totalPlayer):
             self.player[i].money = initMoney[i]
-            print('user at pos {} has {}'.format(i, self.player[i].money), flush=True)
+            self.logger.info('[SET MONEY] Player at pos {} has {}'.format(i, self.player[i].money))
 
     def __str__(self):
-        return 'state: currpos = %s, playernum = %s, moneypot = %s, minbet = %s, last_raised = %s' \
+        return 'currpos = %s, playernum = %s, moneypot = %s, minbet = %s, last_raised = %s' \
                % (self.currpos, self.playernum, self.moneypot, self.minbet, self.last_raised)
 
     def restore(self, turn, button, bigBlind):      # restore the state before each round
@@ -429,6 +429,34 @@ class Decision(object):
                 return False
             return True
         return False
+    
+    def make_decision(self, action, amount=0):
+        ''' we have to make sure that
+            this is the only entrance to make decisions
+            thus to ensure no bugs in decision making'''
+        self.clear()
+        if (action == "fold"):
+            self.giveup = 1
+            assert (self.amount == 0)
+        elif (action == "check"):
+            self.check = 1
+            assert (self.amount == 0)
+        elif (action == "call"):
+            self.callbet = 1
+            assert (self.amount == 0)
+        elif (action == "allin"):
+            self.allin = 1
+            assert (self.amount == 0)
+        elif (action == "raise"):
+            if (amount == 0):
+                self.raisebet = 1
+                self.amount = amount
+            else:
+                self.callbet = 1
+        else:
+            raise Exception("Action not understood")
+
+        
 
     def fix(self):
         amount = self.amount

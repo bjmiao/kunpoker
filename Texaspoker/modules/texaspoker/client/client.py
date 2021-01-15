@@ -171,12 +171,12 @@ class Client(object):
                     ## only my turn to work?
                     decision = self.ai(self.mypos, self.state)
                     if not decision.isValid():
-                        self.logger.info('$$$ This client made a invalid decision')
+                        self.logger.info('$$$ [MY ACTION] This client made a invalid decision')
                         print(decision, flush=True)
                         decision.fix()
                         print(decision, flush=True)
 
-                    self.logger.info('$$$ This client made a decision at pos {}'.format(self.mypos))
+                    self.logger.info('$$$ [MY ACTION] This client made a decision at pos {}'.format(self.mypos))
                     self.add_request(dealer_pb2.DealerRequest(user=self.username, giveup=decision.giveup,
                     allin=decision.allin, check=decision.check, raisebet=decision.raisebet,
                     callbet=decision.callbet, amount=decision.amount, pos=self.mypos, type=MessageType_StateUpdate, token=self.key))
@@ -291,19 +291,22 @@ class Client(object):
 
                # self.initialized = True
 
-                self.logger.info('******client initialized****** client:%d step:%d'%(self.mypos, self.step))
+                self.logger.info('******client initialized****** My name:%s Position:%d' % (self.username, self.mypos))
 
             elif res.type == MessageType_GameOver:
                 # game over info
                 self.logger.info('***********game over***************')
-                self.logger.info('sharedcards:%s' % str(self.state.sharedcards))
-                for x in self.state.sharedcards:
-                    self.logger.info('%s. '%printcard(x))
-                self.logger.info('cards:%s' % str(self.state.player[self.mypos].cards))
-                for x in self.state.player[self.mypos].cards:
-                    self.logger.info('%s. '%printcard(x))
+                sharedcards_str = ', '.join([printcard(x) for x in self.state.sharedcards])
+                self.logger.info('[SHARED CARDS] %s' % sharedcards_str)
+                # self.logger.info(sharedcards_str)
+
+                # for x in self.state
+                for player in self.state.player:
+                    playercards_str = ', '.join([printcard(x) for x in player.cards])
+                    self.logger.info('[PLAYER CARDS] Player: %s, Card: %s' % (player, playercards_str) )
+
                 self.logger.info('\n')
-                self.logger.info('Have money {} left'.format(res.userMoney[self.mypos]))
+                self.logger.info('$$$ Have money {} left'.format(res.userMoney[self.mypos]))
 
                 self.stoped = True
 
@@ -332,9 +335,10 @@ class Client(object):
                                         token=self.key, status=self.step)
 
 def printcard(num):
-    name = ['spade', 'heart', 'diamond', 'club']
-    value = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-    return '%s, %s' %(name[num%4], value[num//4])
+    # name = ['spade', 'heart', 'diamond', 'club']
+    name = ['S','H','D','C']
+    value = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
+    return '%s%s' %(name[num%4], value[num//4])
 
 def run_func(thread):
     thread.run()
@@ -367,6 +371,7 @@ def parse_arg():
     parse = argparse.ArgumentParser()
     parse.add_argument('-a','--ai',dest='ai',action='store',help='set ai',default='1.1')
     parse.add_argument('-u','--user',dest='user',action='store',help='set username')
+    # parse.add_argument('-p','--port', dest='port', action='store', type=int, help='set the competition port')
     args = parse.parse_args()
     return args
 
@@ -375,6 +380,7 @@ if __name__ == '__main__':
     args = parse_arg()
     username = args.user
     ai_str = args.ai
+    # port = args.port
     
     # if len(sys.argv) < 2:
     #     print('Error: enter the name for the client!')
