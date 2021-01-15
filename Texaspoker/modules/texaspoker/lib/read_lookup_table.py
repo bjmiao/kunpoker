@@ -34,6 +34,7 @@ def read_pair_level(pairs):
         x, y = aka[1], aka[0]
     return PAIR_LEVEL.loc[x, y]
 
+# select the largest from 5, 6 or 7 cards
 def select_largest(all_cards, lookup_table):
     if len(all_cards) < 5:
         raise ValueError("Cards number is less then 5")
