@@ -2,7 +2,7 @@
 # pycache
 __pycache__/
 
-# vscode studd
+# vscode stuff
 .vscode/
 
 
@@ -11,3 +11,6 @@ __pycache__/
 
 # pickle
 *.pkl
+
+# Max stuff
+.DS_Store
