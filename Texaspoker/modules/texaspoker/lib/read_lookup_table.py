@@ -2,7 +2,7 @@
 Author: bmiao
 Date: 2021-01-15 15:12:59
 LastEditors: zgong
-LastEditTime: 2021-01-16 21:23:33
+LastEditTime: 2021-01-16 22:05:22
 '''
 import pickle
 import random
@@ -42,7 +42,6 @@ def gen_level_dict():
     return level_dict
 
 PAIR_LEVEL_DICT = gen_level_dict()
-
 
 def select_largest(all_cards, lookup_table):
     if len(all_cards) < 5:
