@@ -425,19 +425,24 @@ class State(object):
             f.write(','.join([str(p.init_money) for p in self.player])+"\n")
             f.write(','.join([str(p.init_money) for p in self.player])+"\n")
             for decision in self.decision_history:
+                _actionNum = int(decision.actionNum)
+                _pos = int(decision.pos)
+                _amount = int(decision.amount)
+                _type = int(decision.type)
+
                 action = ""
-                if decision.raisebet == 1:
+                if int(decision.raisebet) == 1:
                     action = 'raisebet'
-                elif decision.callbet == 1:
+                elif int(decision.callbet) == 1:
                     action = 'callbet'
-                elif decision.check == 1:
+                elif int(decision.check) == 1:
                     action = 'check'
-                elif action.giveup == 1:
+                elif int(decision.giveup) == 1:
                     action = 'fold'
-                elif action.allin == 1:
+                elif int(decision.allin) == 1:
                     action = 'allin'
-                f.write("%d,%s,%d,%d,%d" % (decision.actionNum, decision.pos,
-                        action, decision.amount, decision.type) + "\n")
+                f.write("%d,%d,%s,%d,%d" % (_actionNum, _pos,
+                        action, _amount, _type) + "\n")
             for p in self.player:
                 f.write(str(p) + "\n")
             f.write(','.join([str(p.money) for p in self.player])+"\n")

@@ -9,7 +9,7 @@ import random
 import pandas as pd
 import numpy as np
 
-from lib.card_value import aka_pair, encoding
+from lib.card_value import aka_pair, card_encoding_5
 from lib.client_lib import Decision, Hand, Player, State
 from lib.read_lookup_table import MonteCarlo, read_lookup_table, select_largest, read_pair_level, MonteCarlo_compare
 
