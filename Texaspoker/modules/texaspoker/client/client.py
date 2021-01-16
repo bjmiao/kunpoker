@@ -22,11 +22,17 @@ ISTESTING = False
 # *********************modify here to change import path if you need ***********************
 import communicate.dealer_pb2 as dealer_pb2
 import communicate.dealer_pb2_grpc as rpc
-from lib.client_lib import (MessageType_ClientInit, MessageType_GameDecision,
-                            MessageType_GameOver, MessageType_GameStarted,
-                            MessageType_HeartBeat, MessageType_IllegalDecision,
-                            MessageType_InvalidToken, MessageType_StateControl,
-                            MessageType_StateUpdate, Player, State)
+from lib.client_lib import State
+from lib.client_lib import Player
+from lib.client_lib import MessageType_HeartBeat
+from lib.client_lib import MessageType_StateUpdate
+from lib.client_lib import MessageType_GameDecision
+from lib.client_lib import MessageType_StateControl
+from lib.client_lib import MessageType_ClientInit
+from lib.client_lib import MessageType_GameOver
+from lib.client_lib import MessageType_InvalidToken
+from lib.client_lib import MessageType_GameStarted
+from lib.client_lib import MessageType_IllegalDecision
 from lib.simple_logger import simple_logger
 
 # **************************************modify here to use your own AI! ***************************
@@ -46,7 +52,7 @@ from AI.v2 import ai as ai_2
 
 # **************************************modify here to set address and port ***********************
 address = '47.103.23.116'
-port = 56713
+port = 56703
 # *************************************************************************************************
 
 
@@ -63,7 +69,7 @@ port = 56713
 #*********
 
 
-CLIENT_VERSION = 'V1.4'
+CLIENT_VERSION = 'V1.6'
 
 class Client(object):
     def __init__(self, u: str, AI, logger, pos=0):
@@ -99,8 +105,9 @@ class Client(object):
         self.step = -1
         if self.logger is None:
             self.logger = simple_logger()
+        print('init_state')
         self.state = State(self.logger, self.totalPlayer, self.initMoney, self.bigBlind, self.button)
-
+        self.state._decision_so_far = []
         self.initialized = False
         self.stoped = False
         self.round = 0
@@ -186,6 +193,8 @@ class Client(object):
                 self.print_stateupdate(res)
                 self.state.currpos = res.pos
                 self._decision_so_far.append(res)
+                self.state._decision_so_far = self._decision_so_far
+
                 if res.giveup == 1:
                     self.state.player[self.state.currpos].active = False
                     self.state.playernum -= 1

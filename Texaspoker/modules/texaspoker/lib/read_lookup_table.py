@@ -2,7 +2,7 @@
 Author: bmiao
 Date: 2021-01-15 15:12:59
 LastEditors: zgong
-LastEditTime: 2021-01-15 20:16:01
+LastEditTime: 2021-01-16 20:30:18
 '''
 import pickle
 import random
@@ -34,6 +34,17 @@ def read_pair_level(pairs):
         x, y = aka[1], aka[0]
     return PAIR_LEVEL.loc[x, y]
 
+def gen_level_dict():
+    level_dict = {i:[] for i in range(1,7)}
+    for cards in combinations(range(52),2):
+        cards = sorted(cards)
+        level = read_pair_level(cards)    
+        level_dict[level].append(cards)
+    return level_dict
+
+PAIR_LEVEL_DICT = gen_level_dict()
+
+
 def select_largest(all_cards, lookup_table):
     if len(all_cards) < 5:
         raise ValueError("Cards number is less then 5")
@@ -47,7 +58,6 @@ def select_largest(all_cards, lookup_table):
             max_val_hand = hand
     return max_val_hand, max_val / LENGTH
 
-
 def MonteCarlo(heap, mycards):
     random.shuffle(heap)
     while len(mycards) != 7:
@@ -57,12 +67,23 @@ def MonteCarlo(heap, mycards):
 
 def MonteCarlo_compare(heap, mycards,oppsite_card_range=[]):
     random.shuffle(heap)
-
+    oppsite_hand = [-1,-1]
     if len(oppsite_card_range)==0:
-        oppsite = mycards.copy()
-        oppsite[0] = heap.pop()
-        oppsite[1] = heap.pop()
+        oppsite_hand[0] = heap.pop()
+        oppsite_hand[1] = heap.pop()
+    else:
+        while True:
+            oppsite_hand = random.choice(oppsite_card_range)
+            if (oppsite_hand[0] in heap) and (oppsite_hand[1] in heap):
+                heap.remove(oppsite_hand[0])
+                heap.remove(oppsite_hand[1])
+                random.shuffle(heap)
+                break
 
+    oppsite = mycards.copy()
+    oppsite[0] = oppsite_hand[0]
+    oppsite[1] = oppsite_hand[1]
+    
     while len(mycards) != 7:
         share_card = heap.pop()
         mycards.append(share_card)
