@@ -2,6 +2,7 @@ import argparse
 import os
 import sys
 import threading
+import re
 import time
 from pathlib import Path
 
@@ -46,7 +47,7 @@ from AI.v2 import ai as ai_2
 
 # **************************************modify here to set address and port ***********************
 address = '47.103.23.116'
-port = 56713
+port = 56703
 # *************************************************************************************************
 
 
@@ -99,7 +100,7 @@ class Client(object):
         self.step = -1
         if self.logger is None:
             self.logger = simple_logger()
-        self.state = State(self.logger, self.totalPlayer, self.initMoney, self.bigBlind, self.button)
+        # self.state = State(self.logger, self.totalPlayer, self.initMoney, self.bigBlind, self.button)
 
         self.initialized = False
         self.stoped = False
@@ -186,6 +187,8 @@ class Client(object):
                 self.print_stateupdate(res)
                 self.state.currpos = res.pos
                 self._decision_so_far.append(res)
+                self.state.decision_history.append(res)
+                # self.logger.info(str(self._decision_so_far))
                 if res.giveup == 1:
                     self.state.player[self.state.currpos].active = False
                     self.state.playernum -= 1
@@ -222,7 +225,7 @@ class Client(object):
                 self.step += 1
 
             elif res.type == MessageType_IllegalDecision:
-                self.logger.info('player at pos {} illegalMove and is forced to give up. actionNum {}'.format(res.pos, res.actionNum));
+                self.logger.info('[ILLEGAL] player at pos {} illegalMove and is forced to give up. actionNum {}'.format(res.pos, res.actionNum));
                 self.state.player[self.state.currpos].active = False
                 self.state.playernum -= 1
 
@@ -285,8 +288,19 @@ class Client(object):
                     # self.stoped = True
                     continue
                 self.logger.info(res.extra)
+
+                userlist = res.extra.split("\n")
+                usernames = {}
+                for x in userlist:
+                    result = re.search("pos (\d+): (\w+)", x)
+                    if (result):
+                        _pos, _username = int(result.group(1)), result.group(2)
+                        usernames[_pos] = _username
+                self.logger.info('[USERNAME] %s' % str(usernames))
+                # usernames = {0: '01shouhu', 1: '01tesla'}
                 self.step = 0
-                self.state = State(self.logger, self.totalPlayer, self.initMoney, self.bigBlind, self.button)
+                self.state = State(self.logger, self.totalPlayer, usernames,
+                            self.initMoney, self.bigBlind, self.button)
                 self.state.last_raised = self.bigBlind
 
                # self.initialized = True
@@ -296,6 +310,7 @@ class Client(object):
             elif res.type == MessageType_GameOver:
                 # game over info
                 self.logger.info('***********game over***************')
+                self.state.save_game_replay("./history/")
                 sharedcards_str = ', '.join([printcard(x) for x in self.state.sharedcards])
                 self.logger.info('[SHARED CARDS] %s' % sharedcards_str)
                 # self.logger.info(sharedcards_str)

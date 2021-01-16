@@ -1,3 +1,6 @@
+import time
+import os
+import random
 from time import sleep
 import communicate.dealer_pb2 as dealer_pb2
 import communicate.dealer_pb2_grpc as rpc
@@ -103,7 +106,6 @@ class Hand(object):
         for i in range(4):
             self.judge_num_eachcolor[i] = list(map(judge_exist, self.cnt_num_eachcolor[i]))
 
-
         self.nums.sort(reverse=True)
         for i in range(12, -1, -1):
             if self.cnt_num[i] == 1:
@@ -195,7 +197,6 @@ class Hand(object):
         if self.cnt_num.count(2) > 1:
             self.level = 3
             return
-
 
         for i in range(12, -1, -1):
             if self.cnt_num[i] == 2:
@@ -305,21 +306,25 @@ def judge_two(cards0, cards1):
             # assert 0
         return 0
 
-class Player(object):
 
-    def __init__(self, initMoney, state):
+class Player(object):
+    def __init__(self, _init_money, _username="unknown"):
+        # user profile
+        self.username = _username     # username, 'unknown' is unknown
+        self.init_money = _init_money  # init money
+        self.inited = False
+        self.money = _init_money        # money player remains
+
+        # game states
         self.active = True      # if the player is active(haven't giveups)
-        self.money = initMoney  # money player has
         self.bet = 0            # the bet in this round
         self.cards = []         # private cards
-        self.allin = 0          # if the player has all in
         self.totalbet = 0       # the bet in total(all round)
-        self.state = state      # state
+        self.allin = 0          # if the player has all in
 
-        ## user data
-        self.username = ''
+        # self.state = state      # state
 
-        ## session data
+        # session data
         self.token = ''
         self.connected = False
         self.last_msg_time = None
@@ -337,35 +342,41 @@ class Player(object):
         self.allin = 1
         self.money = 0
 
-    def getcards(self):
-        return self.cards + self.state.sharedcards
+    def getcards(self, sharedcards):
+        return self.cards + sharedcards
+        # return self.cards + self.state.sharedcards
 
     def __str__(self):
         return 'player: active = %s, money = %s, bet = %s, allin = %s' % (self.active, self.money, self.bet, self.allin)
 
 
-
 class State(object):
-    def __init__(self, logger, totalPlayer, initMoney, bigBlind, button):
+    def __init__(self, logger, totalPlayer, usernames, initMoney, bigBlind, button):
         ''' class to hold the game '''
-        self.totalPlayer = totalPlayer # total players in the game
-        self.bigBlind = bigBlind       # bigBlind, every bet should be multiple of smallBlind which is half of bigBlind.
-        self.button = button           # the button position
-        self.currpos = 0               # current position
-        self.playernum = 0             # active player number
-        self.moneypot = 0              # money in the pot
-        self.minbet = bigBlind         # minimum bet to call in this round, total bet
-        self.sharedcards = []          # shared careds in the game
-        self.turnNum = 0               # 0, 1, 2, 3 for pre-flop round, flop round, turn round and river round
-        self.last_raised = bigBlind    # the amount of bet raise last time
-        self.player = []               # All players. You can check them to help your decision. The 'cards' field of other player is not visiable for sure.
-        for i in range(totalPlayer):
-            self.player.append(Player(initMoney, self))
+        self.totalPlayer = totalPlayer      # total players in the game
+        self.bigBlind = bigBlind            # bigBlind, every bet should be multiple of smallBlind which is half of bigBlind.
+        self.button = button                # the button position
+        self.currpos = 0                    # current position
+        self.playernum = 0                  # active player number
+        self.moneypot = 0                   # money in the pot
+        self.minbet = bigBlind              # minimum bet to call in this round, total bet
+        self.sharedcards = []               # shared careds in the game
+        self.turnNum = 0                    # 0, 1, 2, 3 for pre-flop round, flop round, turn round and river round
+        self.last_raised = bigBlind         # the amount of bet raise last time
+        self.player = []                    # All players. You can check them to help your decision. The 'cards' field of other player is not visiable for sure.
+        self.decision_history = []   # all th history of this game
+
+        for pos in range(totalPlayer):
+            # initMoney
+            # if (len(username_list) <= i):
+            self.player.append(Player(initMoney))
+            self.player[pos].username = usernames.get(pos, 'unknown')
 
         self.logger = logger
 
     def set_user_money(self, initMoney):
         for i in range(self.totalPlayer):
+            self.player[i].init_money = initMoney[i]
             self.player[i].money = initMoney[i]
             self.logger.info('[SET MONEY] Player at pos {} has {}'.format(i, self.player[i].money))
 
@@ -403,6 +414,33 @@ class State(object):
         self.currpos = (pos + 1) % self.totalPlayer
         return self.currpos
 
+    def save_game_replay(self, folder=""):
+        replay_id = random.randint(10000,99999)
+        time_str = time.strftime("%Y_%m_%d_%H_%M_%S", time.gmtime())
+        replay_filename = time_str+ "_" + str(replay_id) + ".txt"
+        replay_filename = os.path.join(folder, replay_filename)
+        with open(replay_filename, 'w') as f:
+            f.write("%d,%d,%d \n" % (self.totalPlayer, self.bigBlind, self.button ))
+            f.write(','.join([p.username for p in self.player])+"\n")
+            f.write(','.join([str(p.init_money) for p in self.player])+"\n")
+            f.write(','.join([str(p.init_money) for p in self.player])+"\n")
+            for decision in self.decision_history:
+                action = ""
+                if decision.raisebet == 1:
+                    action = 'raisebet'
+                elif decision.callbet == 1:
+                    action = 'callbet'
+                elif decision.check == 1:
+                    action = 'check'
+                elif action.giveup == 1:
+                    action = 'fold'
+                elif action.allin == 1:
+                    action = 'allin'
+                f.write("%d,%s,%d,%d,%d" % (decision.actionNum, decision.pos,
+                        action, decision.amount, decision.type) + "\n")
+            for p in self.player:
+                f.write(str(p) + "\n")
+            f.write(','.join([str(p.money) for p in self.player])+"\n")
 
 class Decision(object):
     giveup = 0   # 弃牌
