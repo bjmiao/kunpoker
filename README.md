@@ -1,3 +1,9 @@
+<!--
+ * @Author: zgong
+ * @Date: 2021-01-15 15:12:59
+ * @LastEditors: zgong
+ * @LastEditTime: 2021-01-15 23:00:29
+-->
 # kunpoker
 GUI, Multi-player game server, AI, cheat code, etc. Everything you need about Texas Hold'em
 
@@ -48,3 +54,8 @@ From zgong:
 1. 根据对手行为，估计牌力范围，修正蒙特卡洛结果，提高读牌能力
 2. 修正raise行为，加入随机数 对牌力作平衡
 
+学习 poker_ai
+1. 全局信息 PokerStates
+2. 学习算法     
+Evaluates hand strengths using a variant of Cactus Kev's algorithm:
+    http://suffe.cool/poker/evaluator.html
