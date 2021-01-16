@@ -2,7 +2,7 @@
 Author: bmiao
 Date: 2021-01-15 15:12:59
 LastEditors: zgong
-LastEditTime: 2021-01-16 20:30:18
+LastEditTime: 2021-01-16 21:23:33
 '''
 import pickle
 import random
@@ -15,8 +15,7 @@ import pandas as pd
 from .card_value import aka_pair, card2id, encoding, id2card
 
 LENGTH = 2598960
-
-PAIR_LEVEL = pd.read_csv(Path(__file__).parent/'pair_level.csv', index_col=0)
+PAIR_LEVEL = pd.read_csv(Path(__file__).parent/'pair_level.csv',index_col=0)
 
 def read_lookup_table():
     with open(Path(__file__).parent/"lookup_table.pkl", "rb") as f:

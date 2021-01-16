@@ -2,12 +2,15 @@
 Author: zgong
 Date: 2021-01-15 15:19:34
 LastEditors: zgong
-LastEditTime: 2021-01-16 20:33:18
+LastEditTime: 2021-01-16 21:56:02
 '''
 import random
+import pickle
 
 import numpy as np
 import pandas as pd
+import copy
+
 from lib.card_value import aka_pair, encoding
 from lib.client_lib import Decision, Hand, Player, State
 from lib.read_lookup_table import (MonteCarlo, MonteCarlo_compare,
@@ -22,6 +25,17 @@ class AI_Client():
 
 def ai(id, state):
     # print(state._decision_so_far)
+    state._decision_so_far
+    
+    # for player in state.player:
+    #     if player.active:
+    #         print(player.cards)
+    #         print(player.money)
+    print(state)
+
+    if state.turnNum == 2:
+        state.dump('state.pkl')
+        raise Exception
     remain_card = list(range(0, 52))
     cards = state.player[id].cards + state.sharedcards
     num = len(cards)  # 当前状态

@@ -11,3 +11,5 @@ __pycache__/
 
 # pickle
 *.pkl
+
+*.DS_store
