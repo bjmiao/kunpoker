@@ -12,16 +12,12 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from .card_value import aka_pair, card2id, encoding, id2card
+from .card_value import aka_pair, card2id, \
+    card_encoding_5, id2card, select_largest, read_lookup_table
 
 LENGTH = 2598960
 
 PAIR_LEVEL = pd.read_csv(Path(__file__).parent/'pair_level.csv', index_col=0)
-
-def read_lookup_table():
-    with open(Path(__file__).parent/"lookup_table.pkl", "rb") as f:
-        lookup_table = pickle.load(f)
-    return lookup_table
 
 LOOKUPTABLE = read_lookup_table()
 
@@ -33,20 +29,6 @@ def read_pair_level(pairs):
     else:
         x, y = aka[1], aka[0]
     return PAIR_LEVEL.loc[x, y]
-
-# select the largest from 5, 6 or 7 cards
-def select_largest(all_cards, lookup_table):
-    if len(all_cards) < 5:
-        raise ValueError("Cards number is less then 5")
-    max_val = -1
-    max_val_hand = None
-    for hand in combinations(all_cards, 5):
-        hand = sorted(hand)
-        val = lookup_table[encoding(hand)]
-        if val > max_val:
-            max_val = val
-            max_val_hand = hand
-    return max_val_hand, max_val / LENGTH
 
 
 def MonteCarlo(heap, mycards):
@@ -77,13 +59,13 @@ def test():
     cards = ['C2', 'S3', 'S2', 'S4', 'H3']
     hand = [card2id(card) for card in cards]
     lookup_table = read_lookup_table()
-    print(lookup_table[encoding(hand)])
+    print(lookup_table[card_encoding_5(hand)])
     cnt = 0
     while (True):
         cnt += 1
         hand = random.sample(range(52), 7)
         print([id2card(x) for x in hand])
-        # value = lookup_table[encoding(hand)] / LENGTH
+        # value = lookup_table[card_encoding_5(hand)] / LENGTH
         max_val_hand, max_val = select_largest(hand, lookup_table)
 
         print("Level:", max_val, " hand:", [id2card(x) for x in max_val_hand])
