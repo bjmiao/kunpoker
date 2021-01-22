@@ -2,7 +2,7 @@
 Author: bmiao
 Date: 2021-01-15 15:12:59
 LastEditors: zgong
-LastEditTime: 2021-01-16 22:05:22
+LastEditTime: 2021-01-22 18:14:02
 '''
 import pickle
 import random
@@ -12,15 +12,11 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from .card_value import aka_pair, card2id, encoding, id2card
+from .card_value import aka_pair, card2id, \
+    card_encoding_5, id2card, select_largest, read_lookup_table
 
 LENGTH = 2598960
 PAIR_LEVEL = pd.read_csv(Path(__file__).parent/'pair_level.csv',index_col=0)
-
-def read_lookup_table():
-    with open(Path(__file__).parent/"lookup_table.pkl", "rb") as f:
-        lookup_table = pickle.load(f)
-    return lookup_table
 
 LOOKUPTABLE = read_lookup_table()
 
@@ -95,13 +91,13 @@ def test():
     cards = ['C2', 'S3', 'S2', 'S4', 'H3']
     hand = [card2id(card) for card in cards]
     lookup_table = read_lookup_table()
-    print(lookup_table[encoding(hand)])
+    print(lookup_table[card_encoding_5(hand)])
     cnt = 0
     while (True):
         cnt += 1
         hand = random.sample(range(52), 7)
         print([id2card(x) for x in hand])
-        # value = lookup_table[encoding(hand)] / LENGTH
+        # value = lookup_table[card_encoding_5(hand)] / LENGTH
         max_val_hand, max_val = select_largest(hand, lookup_table)
 
         print("Level:", max_val, " hand:", [id2card(x) for x in max_val_hand])

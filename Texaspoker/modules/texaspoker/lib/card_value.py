@@ -1,6 +1,7 @@
 import random
 from itertools import combinations
 import functools
+from pathlib import Path
 import time
 import pickle
 
@@ -141,6 +142,35 @@ def judge_card_level(card_list):
     # print(level)
     return level
 
+
+def select_largest(all_cards, lookup_table):
+    '''
+    select the largest from 5, 6 or 7 cards
+    
+    '''
+    LENGTH = 2598960
+
+    if len(all_cards) < 5:
+        raise ValueError("Cards number is less then 5")
+    max_val = -1
+    max_val_hand = None
+    for hand in combinations(all_cards, 5):
+        hand = sorted(hand)
+        val = lookup_table[card_encoding_5(hand)]
+        if val > max_val:
+            max_val = val
+            max_val_hand = hand
+    return max_val_hand, max_val / LENGTH
+
+
+def read_lookup_table(filename="lookup_table.pkl"):
+    ''' read the look up table. That'''
+
+    with open(Path(__file__).parent/filename, "rb") as f:
+        lookup_table = pickle.load(f)
+    return lookup_table
+
+
 def compare_level(l1, l2):
     if (l1[0] < l2[0]):
         return -1
@@ -153,39 +183,18 @@ def compare_level(l1, l2):
             return -1
     return 0
 
-def encoding(card):
-    # for card in cards:
-    a = 0 ^ (1 << card[0]) | (1 << card[1]) | (1 << card[2]) | (1 << card[3]) | (1 << card[4])
-    # print(type(a))
+def card_encoding_2(card):
+    a = (1 << card[0]) | (1 << card[1])
     return a
 
-if __name__ == "__main__":
-    # card_list = [0, 3, 6, 10, 20, 30, 40]
-    # hand = Hand(card_list)
-    # print(hand)
+def card_encoding_5(card):
+    # a = 0
+    # for card in cards:
+    a =  (1 << card[0]) | (1 << card[1]) | (1 << card[2]) | (1 << card[3]) | (1 << card[4])
+    return a
 
-    cards = ['S2', 'S3', 'S4', 'S5', 'SA']
-    card_list = [card2id(card) for card in cards]
-    # print(card_list)
-    # start = time.time()
-    e = encoding(card_list)
-    # print(e)
-    # for _ in range(1000):
-    #     encoding(card_list)
-    # end = time.time()
-    # print(end - start,'s')
 
-    cards = ['C2', 'S3', 'S2', 'S4', 'H3']
-    card_list = [card2id(card) for card in cards]
-    # print(card_list)
-    # e = encoding(card_list)
-    # print(e)
-    # start = time.time()
-    # for _ in range(1000):
-    #     encoding(card_list)
-    # end = time.time()
-    # print(end - start,'s')
-
+def generate_hand_strength_lookup_table():
     index = 0
     level_table = [[] for _ in range(10)]
     for cards in combinations(range(52), 5):
@@ -193,11 +202,10 @@ if __name__ == "__main__":
         # print('===')
         # print(cards)
         # print([id2card(i) for i in cards])
-        # print(encoding(cards), judge_card_level(cards))
         (level, desc) = judge_card_level(cards)
         # print('!!!')
         # print(level, desc)
-        level_table[level].append((encoding(cards), (level, desc) ))
+        level_table[level].append((card_encoding_5(cards), (level, desc) ))
         index += 1
         if (index % 10000 == 0):
             print(index)
@@ -224,32 +232,74 @@ if __name__ == "__main__":
     print(len(strength_table_in_level))
     print(strength_table_in_level[-1][-1]/total_len)
 
-    lookup_table = {x[0]:x[1] for x in strength_table_in_level}
+    lookup_table = {x[0]: x[1] for x in strength_table_in_level}
 
     with open("lookup_table.pkl", "wb") as f:
         pickle.dump(lookup_table, f)
 
-    # print(level_table)
-    # print(lookup_table)
-    # l1 = judge_card_level(cards)
-    # cards = ['S9', 'S7', 'ST', 'S8', 'S6']
-    # l2 = judge_card_level(cards)
-    # print(compare_level(l1, l2))
-    # # cards = ['SQ', 'SK', 'SJ', 'S9', 'ST']
-    # # judge_card_level(cards)
-    # # cards = ['HA', 'H3', 'H8', 'H5', 'H4']
-    # # judge_card_level(cards)
-    # # cards = ['S5', 'D3', 'C4', 'S6', 'D2']
-    # # judge_card_level(cards)
-    # # cards = ['ST', 'DT', 'C9', 'S8', 'S9']
-    # # judge_card_level(cards)
-    # # cards = ['ST', 'DT', 'C9', 'ST', 'S9']
-    # # judge_card_level(cards)
-    # # cards = ['ST', 'DT', 'CA', 'S8', 'S9']
-    # # judge_card_level(cards)
-    # # cards = ['ST', 'DT', 'CT', 'S8', 'S9']
-    # # judge_card_level(cards)
-    # # cards = ['ST', 'DT', 'CT', 'ST', 'S9']
-    # # judge_card_level(cards)
-    # # cards = ['SA', 'D3', 'C6', 'S8', 'S9']
-    # # judge_card_level(cards)
+def generate_2v2_table():
+    ''' To generate a 2v2 table.
+    It can show that at the beginning,
+        the winning expctation of each two pairs (AA v.s. KK) 
+    '''
+    LOOKUP_TABLE = read_lookup_table()
+    expectation_table = {}
+
+    for _ in range(1):
+        cards = random.sample(range(52), 4)
+        my_card = [cards[0], cards[1]]
+        other_card = [cards[2], cards[3]]
+
+        my_card_idx = card_encoding_2(my_card)
+        other_card_idx = card_encoding_2(other_card)
+
+        print([id2card(x) for x in my_card], my_card_idx)
+        print([id2card(x) for x in other_card], other_card_idx)
+
+        if my_card_idx > other_card_idx:
+            continue
+
+        if (my_card_idx, other_card_idx) in expectation_table.keys():
+            continue
+   
+        deck = list(range(52))
+        for card in cards:
+            deck.remove(card)
+    
+        winning, loss, tie = 0, 0, 0
+        cnt = 0
+
+        # for cnt in range(100000):
+        for shared_card in combinations(deck, 5):
+            # shared_card = random.sample(deck, 5)
+            my_largest_hand, my_value = select_largest([*shared_card, *my_card], LOOKUP_TABLE)
+            other_largest_hand, other_value = select_largest([*shared_card, *other_card], LOOKUP_TABLE)
+            
+            # print([id2card(x) for x in shared_card])
+            if (my_value > other_value):
+                winning += 1
+            elif (my_value < other_value):
+                loss += 1
+            elif (my_value == other_value):
+                tie += 1
+            cnt += 1
+            if (cnt % 100000 == 0):
+                print(cnt)
+            # if (cnt == 100000):
+                # break
+
+        expectation = (winning * 2 + tie) / (winning + loss + tie) / 2 
+        # expectation \in [0, 1]. 1 means must win. 0 means must lose.
+        # 0.5 means that it will win have of the pot
+        print(winning, loss, tie)
+        print(winning/cnt, loss/cnt, tie/cnt)
+        expectation_table[(my_card_idx, other_card_idx)] = expectation
+
+    print(expectation_table)
+    with open("2v2_table.pkl", "wb"):
+        pass
+
+if __name__ == "__main__":
+    # generate_hand_strength_lookup_table()
+
+    generate_2v2_table()
