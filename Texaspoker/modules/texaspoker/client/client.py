@@ -106,7 +106,7 @@ class Client(object):
         self.step = -1
         if self.logger is None:
             self.logger = simple_logger()
-        self.state = State(self.logger, self.totalPlayer, self.initMoney, self.bigBlind, self.button)
+        self.state = State(self.logger, self.totalPlayer, {},self.initMoney, self.bigBlind, self.button)
 
         self.initialized = False
         self.stoped = False
