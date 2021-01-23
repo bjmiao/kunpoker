@@ -339,7 +339,7 @@ class Player(object):
         self.totalbet = 0       # the bet in total(all round)
         self.allin = 0          # if the player has all in
 
-        self.state = state      # state
+        #self.state =       # state
 
         # session data
         self.token = ''
@@ -381,7 +381,7 @@ class State(object):
         self.turnNum = 0                    # 0, 1, 2, 3 for pre-flop round, flop round, turn round and river round
         self.last_raised = bigBlind         # the amount of bet raise last time
         self.player = []                    # All players. You can check them to help your decision. The 'cards' field of other player is not visiable for sure.
-        self.decision_history = []   # all th history of this game
+        self.decision_history = {0:[],1:[],2:[],3:[]}   # all th history of this game
 
         for pos in range(totalPlayer):
             # initMoney
@@ -446,25 +446,28 @@ class State(object):
             f.write(','.join([p.username for p in self.player])+"\n")
             f.write(','.join([str(p.init_money) for p in self.player])+"\n")
             f.write(','.join([str(p.init_money) for p in self.player])+"\n")
-            for decision in self.decision_history:
-                _actionNum = int(decision.actionNum)
-                _pos = int(decision.pos)
-                _amount = int(decision.amount)
-                _type = int(decision.type)
+            for term in self.decision_history:
+                decion_for_this_term = self.decision_history[term]
+                for decision in decion_for_this_term:
+                    _term = term
+                    _actionNum = int(decision.actionNum)
+                    _pos = int(decision.pos)
+                    _amount = int(decision.amount)
+                    _type = int(decision.type)
 
-                action = ""
-                if int(decision.raisebet) == 1:
-                    action = 'raisebet'
-                elif int(decision.callbet) == 1:
-                    action = 'callbet'
-                elif int(decision.check) == 1:
-                    action = 'check'
-                elif int(decision.giveup) == 1:
-                    action = 'fold'
-                elif int(decision.allin) == 1:
-                    action = 'allin'
-                f.write("%d,%d,%s,%d,%d" % (_actionNum, _pos,
-                        action, _amount, _type) + "\n")
+                    action = ""
+                    if int(decision.raisebet) == 1:
+                        action = 'raisebet'
+                    elif int(decision.callbet) == 1:
+                        action = 'callbet'
+                    elif int(decision.check) == 1:
+                        action = 'check'
+                    elif int(decision.giveup) == 1:
+                        action = 'fold'
+                    elif int(decision.allin) == 1:
+                        action = 'allin'
+                    f.write("%d,%d,%d,%s,%d,%d" % (_term,_actionNum, _pos,
+                            action, _amount, _type) + "\n")
             for p in self.player:
                 f.write(str(p) + "\n")
             f.write(','.join([str(p.money) for p in self.player])+"\n")

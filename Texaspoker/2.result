@@ -1,0 +1,2401 @@
+56714
+Using 2
+self.key is inited to neLUhLXO
+Wait for next game begin.
+This ai is begin at the pos 0
+pos 0: 01shouhu
+pos 1: 03shouhu
+pos 2: 02shouhu
+
+[USERNAME] {0: '01shouhu', 1: '03shouhu', 2: '02shouhu'}
+******client initialized****** My name:01shouhu Position:0
+[SET MONEY] Player at pos 0 has 2000
+[SET MONEY] Player at pos 1 has 2760
+[SET MONEY] Player at pos 2 has 2000
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+], 1: [], 2: [], 3: []}
+[44, 5]
+2000
+[]
+2740
+[]
+1960
+currpos = 0, playernum = 0, moneypot = 60, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+***********game over***************
+[SHARED CARDS] HJ, D6, S9, C3, H8
+[PLAYER CARDS] Player: player: active = False, money = 2000, bet = 0, allin = 0, Card: SK, H3
+[PLAYER CARDS] Player: player: active = False, money = 2740, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 1960, bet = 0, allin = 0, Card: 
+
+
+$$$ Have money 2000 left
+This ai is begin at the pos 2
+pos 0: 02shouhu
+pos 1: 03shouhu
+pos 2: 01shouhu
+
+[USERNAME] {0: '02shouhu', 1: '03shouhu', 2: '01shouhu'}
+******client initialized****** My name:01shouhu Position:2
+[SET MONEY] Player at pos 0 has 2020
+[SET MONEY] Player at pos 1 has 2740
+[SET MONEY] Player at pos 2 has 2000
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+[ACTION]: player at 1 callbet in round 0. actionNum: 3
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, giveup: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+], 1: [], 2: [], 3: []}
+[]
+2700
+[20, 1]
+1960
+currpos = 2, playernum = -1, moneypot = 80, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 2
+[ACTION]: player at 2 check in round 0. actionNum: 4
+[ACTION]: player at 1 check in round 1. actionNum: 5
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, giveup: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [check: 1
+pos: 1
+type: 1
+actionNum: 5
+], 2: [], 3: []}
+[]
+2700
+[20, 1]
+1960
+currpos = 2, playernum = -1, moneypot = 80, minbet = 0, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 2
+[ACTION]: player at 2 check in round 1. actionNum: 6
+[ACTION]: player at 1 check in round 2. actionNum: 7
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, giveup: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [check: 1
+pos: 1
+type: 1
+actionNum: 5
+, check: 1
+pos: 2
+type: 1
+actionNum: 6
+], 2: [check: 1
+pos: 1
+type: 1
+actionNum: 7
+], 3: []}
+[]
+2700
+[20, 1]
+1960
+currpos = 2, playernum = -1, moneypot = 80, minbet = 0, last_raised = 0
+$$$ [MY ACTION] This client made a decision at pos 2
+[ACTION]: player at 2 check in round 2. actionNum: 8
+[ACTION]: player at 1 check in round 3. actionNum: 9
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, giveup: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [check: 1
+pos: 1
+type: 1
+actionNum: 5
+, check: 1
+pos: 2
+type: 1
+actionNum: 6
+], 2: [check: 1
+pos: 1
+type: 1
+actionNum: 7
+, check: 1
+pos: 2
+type: 1
+actionNum: 8
+], 3: [check: 1
+pos: 1
+type: 1
+actionNum: 9
+]}
+[]
+2700
+[20, 1]
+1960
+currpos = 2, playernum = -1, moneypot = 80, minbet = 0, last_raised = 0
+$$$ [MY ACTION] This client made a decision at pos 2
+[ACTION]: player at 2 check in round 3. actionNum: 10
+***********game over***************
+[SHARED CARDS] DQ, HA, SK, CJ, DK
+[PLAYER CARDS] Player: player: active = False, money = 2020, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 2700, bet = 0, allin = 0, Card: C8, C7
+[PLAYER CARDS] Player: player: active = True, money = 1960, bet = 0, allin = 0, Card: S7, H2
+
+
+$$$ Have money 2000 left
+This ai is begin at the pos 1
+pos 0: 03shouhu
+pos 1: 01shouhu
+pos 2: 02shouhu
+
+[USERNAME] {0: '03shouhu', 1: '01shouhu', 2: '02shouhu'}
+******client initialized****** My name:01shouhu Position:1
+[SET MONEY] Player at pos 0 has 2740
+[SET MONEY] Player at pos 1 has 2000
+[SET MONEY] Player at pos 2 has 2020
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, giveup: 1
+type: 1
+actionNum: 2
+], 1: [], 2: [], 3: []}
+[51, 5]
+1980
+[]
+1980
+currpos = 1, playernum = -1, moneypot = 60, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 callbet in round 0. actionNum: 3
+[ACTION]: player at 2 check in round 0. actionNum: 4
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, giveup: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [], 2: [], 3: []}
+[51, 5]
+1960
+[]
+1980
+currpos = 1, playernum = -1, moneypot = 80, minbet = 0, last_raised = 40
+$$$ [MY ACTION] This client made a invalid decision
+giveup=0, allin=0, check=0, callbet=0, raisebet=1, amount=0
+giveup=0, allin=0, check=0, callbet=1, raisebet=0, amount=0
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 check in round 1. actionNum: 5
+[ACTION]: player at 2 check in round 1. actionNum: 6
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, giveup: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [check: 1
+pos: 1
+type: 1
+actionNum: 5
+, check: 1
+pos: 2
+type: 1
+actionNum: 6
+], 2: [], 3: []}
+[51, 5]
+1960
+[]
+1980
+currpos = 1, playernum = -1, moneypot = 80, minbet = 0, last_raised = 0
+$$$ [MY ACTION] This client made a invalid decision
+giveup=0, allin=0, check=0, callbet=0, raisebet=1, amount=0
+giveup=0, allin=0, check=0, callbet=1, raisebet=0, amount=0
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 check in round 2. actionNum: 7
+[ACTION]: player at 2 check in round 2. actionNum: 8
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, giveup: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [check: 1
+pos: 1
+type: 1
+actionNum: 5
+, check: 1
+pos: 2
+type: 1
+actionNum: 6
+], 2: [check: 1
+pos: 1
+type: 1
+actionNum: 7
+, check: 1
+pos: 2
+type: 1
+actionNum: 8
+], 3: []}
+[51, 5]
+1960
+[]
+1980
+currpos = 1, playernum = -1, moneypot = 80, minbet = 0, last_raised = 0
+$$$ [MY ACTION] This client made a invalid decision
+giveup=0, allin=0, check=0, callbet=0, raisebet=1, amount=0
+giveup=0, allin=0, check=0, callbet=1, raisebet=0, amount=0
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 check in round 3. actionNum: 9
+[ACTION]: player at 2 check in round 3. actionNum: 10
+***********game over***************
+[SHARED CARDS] HA, C2, D8, DK, H9
+[PLAYER CARDS] Player: player: active = False, money = 2740, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 1960, bet = 0, allin = 0, Card: CA, H3
+[PLAYER CARDS] Player: player: active = True, money = 1980, bet = 0, allin = 0, Card: H4, CT
+
+
+$$$ Have money 2040 left
+This ai is begin at the pos 0
+pos 0: 01shouhu
+pos 1: 02shouhu
+pos 2: 03shouhu
+
+[USERNAME] {0: '01shouhu', 1: '02shouhu', 2: '03shouhu'}
+******client initialized****** My name:01shouhu Position:0
+[SET MONEY] Player at pos 0 has 2040
+[SET MONEY] Player at pos 1 has 1980
+[SET MONEY] Player at pos 2 has 2740
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+], 1: [], 2: [], 3: []}
+[7, 45]
+2040
+[]
+1960
+[]
+2700
+currpos = 0, playernum = 0, moneypot = 60, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+[ACTION]: player at 1 raisebet to 80 in round 0. actionNum: 3
+[ACTION]: player at 2 callbet in round 0. actionNum: 4
+[ACTION]: player at 1 raisebet to 280 in round 1. actionNum: 5
+[ACTION]: player at 2 giveup in round 1. actionNum: 6
+***********game over***************
+[SHARED CARDS] H6, D2, C2, D7, C5
+[PLAYER CARDS] Player: player: active = False, money = 2040, bet = 0, allin = 0, Card: C3, HK
+[PLAYER CARDS] Player: player: active = True, money = 1620, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = False, money = 2660, bet = 0, allin = 0, Card: 
+
+
+$$$ Have money 2040 left
+This ai is begin at the pos 0
+pos 0: 01shouhu
+pos 1: 02shouhu
+pos 2: 03shouhu
+
+[USERNAME] {0: '01shouhu', 1: '02shouhu', 2: '03shouhu'}
+******client initialized****** My name:01shouhu Position:0
+[SET MONEY] Player at pos 0 has 2040
+[SET MONEY] Player at pos 1 has 2060
+[SET MONEY] Player at pos 2 has 2660
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+], 1: [], 2: [], 3: []}
+[9, 18]
+2040
+[]
+2040
+[]
+2620
+currpos = 0, playernum = 0, moneypot = 60, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+***********game over***************
+[SHARED CARDS] S4, C3, H6, H2, C4
+[PLAYER CARDS] Player: player: active = False, money = 2040, bet = 0, allin = 0, Card: H4, D6
+[PLAYER CARDS] Player: player: active = False, money = 2040, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 2620, bet = 0, allin = 0, Card: 
+
+
+$$$ Have money 2040 left
+This ai is begin at the pos 0
+pos 0: 01shouhu
+pos 1: 02shouhu
+pos 2: 03shouhu
+
+[USERNAME] {0: '01shouhu', 1: '02shouhu', 2: '03shouhu'}
+******client initialized****** My name:01shouhu Position:0
+[SET MONEY] Player at pos 0 has 2040
+[SET MONEY] Player at pos 1 has 2040
+[SET MONEY] Player at pos 2 has 2680
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+], 1: [], 2: [], 3: []}
+[39, 11]
+2040
+[]
+2020
+[]
+2640
+currpos = 0, playernum = 0, moneypot = 60, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+***********game over***************
+[SHARED CARDS] H7, D8, C9, DJ, SA
+[PLAYER CARDS] Player: player: active = False, money = 2040, bet = 0, allin = 0, Card: CJ, C4
+[PLAYER CARDS] Player: player: active = False, money = 2020, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 2640, bet = 0, allin = 0, Card: 
+
+
+$$$ Have money 2040 left
+This ai is begin at the pos 2
+pos 0: 03shouhu
+pos 1: 02shouhu
+pos 2: 01shouhu
+
+[USERNAME] {0: '03shouhu', 1: '02shouhu', 2: '01shouhu'}
+******client initialized****** My name:01shouhu Position:2
+[SET MONEY] Player at pos 0 has 2700
+[SET MONEY] Player at pos 1 has 2020
+[SET MONEY] Player at pos 2 has 2040
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 callbet in round 0. actionNum: 2
+[ACTION]: player at 1 callbet in round 0. actionNum: 3
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+], 1: [], 2: [], 3: []}
+[]
+2660
+[]
+1980
+[27, 14]
+2000
+currpos = 2, playernum = 0, moneypot = 120, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 2
+[ACTION]: player at 2 check in round 0. actionNum: 4
+[ACTION]: player at 1 check in round 1. actionNum: 5
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [check: 1
+pos: 1
+type: 1
+actionNum: 5
+], 2: [], 3: []}
+[]
+2660
+[]
+1980
+[27, 14]
+2000
+currpos = 2, playernum = 0, moneypot = 120, minbet = 0, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 2
+[ACTION]: player at 2 raisebet to 160 in round 1. actionNum: 6
+[ACTION]: player at 0 giveup in round 1. actionNum: 7
+[ACTION]: player at 1 giveup in round 1. actionNum: 8
+***********game over***************
+[SHARED CARDS] D4, S3, S8, C5, S4
+[PLAYER CARDS] Player: player: active = False, money = 2660, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = False, money = 1980, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 1840, bet = 0, allin = 0, Card: C8, D5
+
+
+$$$ Have money 2120 left
+This ai is begin at the pos 1
+pos 0: 03shouhu
+pos 1: 01shouhu
+pos 2: 02shouhu
+
+[USERNAME] {0: '03shouhu', 1: '01shouhu', 2: '02shouhu'}
+******client initialized****** My name:01shouhu Position:1
+[SET MONEY] Player at pos 0 has 2660
+[SET MONEY] Player at pos 1 has 2120
+[SET MONEY] Player at pos 2 has 1980
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 callbet in round 0. actionNum: 2
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+], 1: [], 2: [], 3: []}
+[]
+2620
+[7, 48]
+2100
+[]
+1940
+currpos = 1, playernum = 0, moneypot = 100, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 callbet in round 0. actionNum: 3
+[ACTION]: player at 2 check in round 0. actionNum: 4
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [], 2: [], 3: []}
+[]
+2620
+[7, 48]
+2080
+[]
+1940
+currpos = 1, playernum = 0, moneypot = 120, minbet = 0, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 check in round 1. actionNum: 5
+[ACTION]: player at 2 check in round 1. actionNum: 6
+[ACTION]: player at 0 check in round 1. actionNum: 7
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [check: 1
+pos: 1
+type: 1
+actionNum: 5
+, check: 1
+pos: 2
+type: 1
+actionNum: 6
+, check: 1
+type: 1
+actionNum: 7
+], 2: [], 3: []}
+[]
+2620
+[7, 48]
+2080
+[]
+1940
+currpos = 1, playernum = 0, moneypot = 120, minbet = 0, last_raised = 0
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 raisebet to 240 in round 2. actionNum: 8
+[ACTION]: player at 2 giveup in round 2. actionNum: 9
+[ACTION]: player at 0 giveup in round 2. actionNum: 10
+***********game over***************
+[SHARED CARDS] ST, DT, DA, C7, HQ
+[PLAYER CARDS] Player: player: active = False, money = 2620, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 1840, bet = 0, allin = 0, Card: C3, SA
+[PLAYER CARDS] Player: player: active = False, money = 1940, bet = 0, allin = 0, Card: 
+
+
+$$$ Have money 2200 left
+This ai is begin at the pos 2
+pos 0: 02shouhu
+pos 1: 03shouhu
+pos 2: 01shouhu
+
+[USERNAME] {0: '02shouhu', 1: '03shouhu', 2: '01shouhu'}
+******client initialized****** My name:01shouhu Position:2
+[SET MONEY] Player at pos 0 has 1940
+[SET MONEY] Player at pos 1 has 2620
+[SET MONEY] Player at pos 2 has 2200
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 callbet in round 0. actionNum: 2
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, giveup: 1
+pos: 1
+type: 1
+actionNum: 3
+], 1: [], 2: [], 3: []}
+[]
+1900
+[4, 46]
+2160
+currpos = 2, playernum = -1, moneypot = 100, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 2
+[ACTION]: player at 2 check in round 0. actionNum: 4
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, giveup: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [], 2: [], 3: []}
+[]
+1900
+[4, 46]
+2160
+currpos = 2, playernum = -1, moneypot = 100, minbet = 0, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 2
+[ACTION]: player at 2 check in round 1. actionNum: 5
+[ACTION]: player at 0 check in round 1. actionNum: 6
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, giveup: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [check: 1
+pos: 2
+type: 1
+actionNum: 5
+, check: 1
+type: 1
+actionNum: 6
+], 2: [], 3: []}
+[]
+1900
+[4, 46]
+2160
+currpos = 2, playernum = -1, moneypot = 100, minbet = 0, last_raised = 0
+$$$ [MY ACTION] This client made a decision at pos 2
+[ACTION]: player at 2 check in round 2. actionNum: 7
+[ACTION]: player at 0 raisebet to 40 in round 2. actionNum: 8
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, giveup: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [check: 1
+pos: 2
+type: 1
+actionNum: 5
+, check: 1
+type: 1
+actionNum: 6
+], 2: [check: 1
+pos: 2
+type: 1
+actionNum: 7
+, raisebet: 1
+amount: 40
+type: 1
+actionNum: 8
+], 3: []}
+[]
+1860
+[4, 46]
+2160
+currpos = 2, playernum = -1, moneypot = 140, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 2
+[ACTION]: player at 2 giveup in round 2. actionNum: 9
+***********game over***************
+[SHARED CARDS] DT, H9, S9, D8, C5
+[PLAYER CARDS] Player: player: active = True, money = 1860, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = False, money = 2600, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = False, money = 2160, bet = 0, allin = 0, Card: S3, DK
+
+
+$$$ Have money 2160 left
+This ai is begin at the pos 2
+pos 0: 03shouhu
+pos 1: 02shouhu
+pos 2: 01shouhu
+
+[USERNAME] {0: '03shouhu', 1: '02shouhu', 2: '01shouhu'}
+******client initialized****** My name:01shouhu Position:2
+[SET MONEY] Player at pos 0 has 2600
+[SET MONEY] Player at pos 1 has 2000
+[SET MONEY] Player at pos 2 has 2160
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 callbet in round 0. actionNum: 2
+[ACTION]: player at 1 callbet in round 0. actionNum: 3
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+], 1: [], 2: [], 3: []}
+[]
+2560
+[]
+1960
+[33, 43]
+2120
+currpos = 2, playernum = 0, moneypot = 120, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 2
+[ACTION]: player at 2 check in round 0. actionNum: 4
+[ACTION]: player at 1 raisebet to 240 in round 1. actionNum: 5
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [raisebet: 1
+amount: 240
+pos: 1
+type: 1
+actionNum: 5
+], 2: [], 3: []}
+[]
+2560
+[]
+1720
+[33, 43]
+2120
+currpos = 2, playernum = 0, moneypot = 360, minbet = 240, last_raised = 240
+$$$ [MY ACTION] This client made a decision at pos 2
+[ACTION]: player at 2 giveup in round 1. actionNum: 6
+[ACTION]: player at 0 giveup in round 1. actionNum: 7
+***********game over***************
+[SHARED CARDS] S8, H2, D2, ST, H6
+[PLAYER CARDS] Player: player: active = False, money = 2560, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 1720, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = False, money = 2120, bet = 0, allin = 0, Card: HT, CQ
+
+
+$$$ Have money 2120 left
+This ai is begin at the pos 2
+pos 0: 03shouhu
+pos 1: 02shouhu
+pos 2: 01shouhu
+
+[USERNAME] {0: '03shouhu', 1: '02shouhu', 2: '01shouhu'}
+******client initialized****** My name:01shouhu Position:2
+[SET MONEY] Player at pos 0 has 2560
+[SET MONEY] Player at pos 1 has 2080
+[SET MONEY] Player at pos 2 has 2120
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+***********game over***************
+[SHARED CARDS] C8, HK, H4, SQ, DQ
+[PLAYER CARDS] Player: player: active = False, money = 2560, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = False, money = 2060, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 2080, bet = 0, allin = 0, Card: HQ, DK
+
+
+$$$ Have money 2140 left
+This ai is begin at the pos 0
+pos 0: 01shouhu
+pos 1: 02shouhu
+pos 2: 03shouhu
+
+[USERNAME] {0: '01shouhu', 1: '02shouhu', 2: '03shouhu'}
+******client initialized****** My name:01shouhu Position:0
+[SET MONEY] Player at pos 0 has 2140
+[SET MONEY] Player at pos 1 has 2060
+[SET MONEY] Player at pos 2 has 2560
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+], 1: [], 2: [], 3: []}
+[5, 45]
+2140
+[]
+2040
+[]
+2520
+currpos = 0, playernum = 0, moneypot = 60, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+***********game over***************
+[SHARED CARDS] C7, S4, SA, D3, HA
+[PLAYER CARDS] Player: player: active = False, money = 2140, bet = 0, allin = 0, Card: H3, HK
+[PLAYER CARDS] Player: player: active = False, money = 2040, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 2520, bet = 0, allin = 0, Card: 
+
+
+$$$ Have money 2140 left
+This ai is begin at the pos 0
+pos 0: 01shouhu
+pos 1: 03shouhu
+pos 2: 02shouhu
+
+[USERNAME] {0: '01shouhu', 1: '03shouhu', 2: '02shouhu'}
+******client initialized****** My name:01shouhu Position:0
+[SET MONEY] Player at pos 0 has 2140
+[SET MONEY] Player at pos 1 has 2580
+[SET MONEY] Player at pos 2 has 2040
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+], 1: [], 2: [], 3: []}
+[2, 45]
+2140
+[]
+2560
+[]
+2000
+currpos = 0, playernum = 0, moneypot = 60, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+[ACTION]: player at 1 callbet in round 0. actionNum: 3
+[ACTION]: player at 2 check in round 0. actionNum: 4
+[ACTION]: player at 1 check in round 1. actionNum: 5
+[ACTION]: player at 2 check in round 1. actionNum: 6
+[ACTION]: player at 1 check in round 2. actionNum: 7
+[ACTION]: player at 2 check in round 2. actionNum: 8
+[ACTION]: player at 1 check in round 3. actionNum: 9
+[ACTION]: player at 2 check in round 3. actionNum: 10
+***********game over***************
+[SHARED CARDS] S5, H7, CK, CA, CT
+[PLAYER CARDS] Player: player: active = False, money = 2140, bet = 0, allin = 0, Card: D2, HK
+[PLAYER CARDS] Player: player: active = True, money = 2540, bet = 0, allin = 0, Card: SJ, D9
+[PLAYER CARDS] Player: player: active = True, money = 2000, bet = 0, allin = 0, Card: S3, DJ
+
+
+$$$ Have money 2140 left
+This ai is begin at the pos 0
+pos 0: 01shouhu
+pos 1: 02shouhu
+pos 2: 03shouhu
+
+[USERNAME] {0: '01shouhu', 1: '02shouhu', 2: '03shouhu'}
+******client initialized****** My name:01shouhu Position:0
+[SET MONEY] Player at pos 0 has 2140
+[SET MONEY] Player at pos 1 has 2000
+[SET MONEY] Player at pos 2 has 2620
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+], 1: [], 2: [], 3: []}
+[36, 27]
+2140
+[]
+1980
+[]
+2580
+currpos = 0, playernum = 0, moneypot = 60, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 callbet in round 0. actionNum: 2
+[ACTION]: player at 1 callbet in round 0. actionNum: 3
+[ACTION]: player at 2 check in round 0. actionNum: 4
+[ACTION]: player at 1 check in round 1. actionNum: 5
+[ACTION]: player at 2 check in round 1. actionNum: 6
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [check: 1
+pos: 1
+type: 1
+actionNum: 5
+, check: 1
+pos: 2
+type: 1
+actionNum: 6
+], 2: [], 3: []}
+[36, 27]
+2100
+[]
+1960
+[]
+2580
+currpos = 0, playernum = 0, moneypot = 120, minbet = 0, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 check in round 1. actionNum: 7
+[ACTION]: player at 1 check in round 2. actionNum: 8
+[ACTION]: player at 2 check in round 2. actionNum: 9
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [check: 1
+pos: 1
+type: 1
+actionNum: 5
+, check: 1
+pos: 2
+type: 1
+actionNum: 6
+, check: 1
+type: 1
+actionNum: 7
+], 2: [check: 1
+pos: 1
+type: 1
+actionNum: 8
+, check: 1
+pos: 2
+type: 1
+actionNum: 9
+], 3: []}
+[36, 27]
+2100
+[]
+1960
+[]
+2580
+currpos = 0, playernum = 0, moneypot = 120, minbet = 0, last_raised = 0
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 check in round 2. actionNum: 10
+[ACTION]: player at 1 check in round 3. actionNum: 11
+[ACTION]: player at 2 raisebet to 240 in round 3. actionNum: 12
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [check: 1
+pos: 1
+type: 1
+actionNum: 5
+, check: 1
+pos: 2
+type: 1
+actionNum: 6
+, check: 1
+type: 1
+actionNum: 7
+], 2: [check: 1
+pos: 1
+type: 1
+actionNum: 8
+, check: 1
+pos: 2
+type: 1
+actionNum: 9
+, check: 1
+type: 1
+actionNum: 10
+], 3: [check: 1
+pos: 1
+type: 1
+actionNum: 11
+, raisebet: 1
+amount: 240
+pos: 2
+type: 1
+actionNum: 12
+]}
+[36, 27]
+2100
+[]
+1960
+[]
+2340
+currpos = 0, playernum = 0, moneypot = 360, minbet = 240, last_raised = 240
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 giveup in round 3. actionNum: 13
+[ACTION]: player at 1 giveup in round 3. actionNum: 14
+***********game over***************
+[SHARED CARDS] CK, CT, S5, S3, DK
+[PLAYER CARDS] Player: player: active = False, money = 2100, bet = 0, allin = 0, Card: SJ, C8
+[PLAYER CARDS] Player: player: active = False, money = 1960, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 2340, bet = 0, allin = 0, Card: 
+
+
+$$$ Have money 2100 left
+This ai is begin at the pos 1
+pos 0: 03shouhu
+pos 1: 01shouhu
+pos 2: 02shouhu
+
+[USERNAME] {0: '03shouhu', 1: '01shouhu', 2: '02shouhu'}
+******client initialized****** My name:01shouhu Position:1
+[SET MONEY] Player at pos 0 has 2700
+[SET MONEY] Player at pos 1 has 2100
+[SET MONEY] Player at pos 2 has 1960
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, giveup: 1
+type: 1
+actionNum: 2
+], 1: [], 2: [], 3: []}
+[7, 43]
+2080
+[]
+1920
+currpos = 1, playernum = -1, moneypot = 60, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+***********game over***************
+[SHARED CARDS] DA, H9, S8, CA, HK
+[PLAYER CARDS] Player: player: active = False, money = 2700, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = False, money = 2080, bet = 0, allin = 0, Card: C3, CQ
+[PLAYER CARDS] Player: player: active = True, money = 1920, bet = 0, allin = 0, Card: 
+
+
+$$$ Have money 2080 left
+This ai is begin at the pos 1
+pos 0: 02shouhu
+pos 1: 01shouhu
+pos 2: 03shouhu
+
+[USERNAME] {0: '02shouhu', 1: '01shouhu', 2: '03shouhu'}
+******client initialized****** My name:01shouhu Position:1
+[SET MONEY] Player at pos 0 has 1980
+[SET MONEY] Player at pos 1 has 2080
+[SET MONEY] Player at pos 2 has 2700
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 callbet in round 0. actionNum: 2
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+], 1: [], 2: [], 3: []}
+[]
+1940
+[2, 28]
+2060
+[]
+2660
+currpos = 1, playernum = 0, moneypot = 100, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+[ACTION]: player at 2 check in round 0. actionNum: 4
+[ACTION]: player at 2 raisebet to 40 in round 1. actionNum: 5
+[ACTION]: player at 0 giveup in round 1. actionNum: 6
+***********game over***************
+[SHARED CARDS] SA, SK, H2, H6, C3
+[PLAYER CARDS] Player: player: active = False, money = 1940, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = False, money = 2060, bet = 0, allin = 0, Card: D2, S9
+[PLAYER CARDS] Player: player: active = True, money = 2620, bet = 0, allin = 0, Card: 
+
+
+$$$ Have money 2060 left
+This ai is begin at the pos 1
+pos 0: 03shouhu
+pos 1: 01shouhu
+pos 2: 02shouhu
+
+[USERNAME] {0: '03shouhu', 1: '01shouhu', 2: '02shouhu'}
+******client initialized****** My name:01shouhu Position:1
+[SET MONEY] Player at pos 0 has 2760
+[SET MONEY] Player at pos 1 has 2060
+[SET MONEY] Player at pos 2 has 1940
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, giveup: 1
+type: 1
+actionNum: 2
+], 1: [], 2: [], 3: []}
+[49, 12]
+2040
+[]
+1900
+currpos = 1, playernum = -1, moneypot = 60, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 callbet in round 0. actionNum: 3
+[ACTION]: player at 2 check in round 0. actionNum: 4
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, giveup: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [], 2: [], 3: []}
+[49, 12]
+2020
+[]
+1900
+currpos = 1, playernum = -1, moneypot = 80, minbet = 0, last_raised = 40
+$$$ [MY ACTION] This client made a invalid decision
+giveup=0, allin=0, check=0, callbet=0, raisebet=1, amount=0
+giveup=0, allin=0, check=0, callbet=1, raisebet=0, amount=0
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 check in round 1. actionNum: 5
+[ACTION]: player at 2 check in round 1. actionNum: 6
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, giveup: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [check: 1
+pos: 1
+type: 1
+actionNum: 5
+, check: 1
+pos: 2
+type: 1
+actionNum: 6
+], 2: [], 3: []}
+[49, 12]
+2020
+[]
+1900
+currpos = 1, playernum = -1, moneypot = 80, minbet = 0, last_raised = 0
+$$$ [MY ACTION] This client made a invalid decision
+giveup=0, allin=0, check=0, callbet=0, raisebet=1, amount=0
+giveup=0, allin=0, check=0, callbet=1, raisebet=0, amount=0
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 check in round 2. actionNum: 7
+[ACTION]: player at 2 check in round 2. actionNum: 8
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, giveup: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [check: 1
+pos: 1
+type: 1
+actionNum: 5
+, check: 1
+pos: 2
+type: 1
+actionNum: 6
+], 2: [check: 1
+pos: 1
+type: 1
+actionNum: 7
+, check: 1
+pos: 2
+type: 1
+actionNum: 8
+], 3: []}
+[49, 12]
+2020
+[]
+1900
+currpos = 1, playernum = -1, moneypot = 80, minbet = 0, last_raised = 0
+$$$ [MY ACTION] This client made a invalid decision
+giveup=0, allin=0, check=0, callbet=0, raisebet=1, amount=0
+giveup=0, allin=0, check=0, callbet=1, raisebet=0, amount=0
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 check in round 3. actionNum: 9
+[ACTION]: player at 2 check in round 3. actionNum: 10
+***********game over***************
+[SHARED CARDS] H4, CA, S4, D6, H6
+[PLAYER CARDS] Player: player: active = False, money = 2760, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 2020, bet = 0, allin = 0, Card: HA, S5
+[PLAYER CARDS] Player: player: active = True, money = 1900, bet = 0, allin = 0, Card: H9, C7
+
+
+$$$ Have money 2100 left
+This ai is begin at the pos 2
+pos 0: 03shouhu
+pos 1: 02shouhu
+pos 2: 01shouhu
+
+[USERNAME] {0: '03shouhu', 1: '02shouhu', 2: '01shouhu'}
+******client initialized****** My name:01shouhu Position:2
+[SET MONEY] Player at pos 0 has 2760
+[SET MONEY] Player at pos 1 has 1900
+[SET MONEY] Player at pos 2 has 2100
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+***********game over***************
+[SHARED CARDS] DQ, DJ, HT, C8, H7
+[PLAYER CARDS] Player: player: active = False, money = 2760, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = False, money = 1880, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 2060, bet = 0, allin = 0, Card: DT, CT
+
+
+$$$ Have money 2120 left
+This ai is begin at the pos 1
+pos 0: 03shouhu
+pos 1: 01shouhu
+pos 2: 02shouhu
+
+[USERNAME] {0: '03shouhu', 1: '01shouhu', 2: '02shouhu'}
+******client initialized****** My name:01shouhu Position:1
+[SET MONEY] Player at pos 0 has 2760
+[SET MONEY] Player at pos 1 has 2120
+[SET MONEY] Player at pos 2 has 1880
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, giveup: 1
+type: 1
+actionNum: 2
+], 1: [], 2: [], 3: []}
+[14, 7]
+2100
+[]
+1840
+currpos = 1, playernum = -1, moneypot = 60, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+***********game over***************
+[SHARED CARDS] SK, S7, S6, HQ, D6
+[PLAYER CARDS] Player: player: active = False, money = 2760, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = False, money = 2100, bet = 0, allin = 0, Card: D5, C3
+[PLAYER CARDS] Player: player: active = True, money = 1840, bet = 0, allin = 0, Card: 
+
+
+$$$ Have money 2100 left
+This ai is begin at the pos 2
+pos 0: 03shouhu
+pos 1: 02shouhu
+pos 2: 01shouhu
+
+[USERNAME] {0: '03shouhu', 1: '02shouhu', 2: '01shouhu'}
+******client initialized****** My name:01shouhu Position:2
+[SET MONEY] Player at pos 0 has 2760
+[SET MONEY] Player at pos 1 has 1900
+[SET MONEY] Player at pos 2 has 2100
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 callbet in round 0. actionNum: 2
+[ACTION]: player at 1 callbet in round 0. actionNum: 3
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+], 1: [], 2: [], 3: []}
+[]
+2720
+[]
+1860
+[1, 12]
+2060
+currpos = 2, playernum = 0, moneypot = 120, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 2
+[ACTION]: player at 2 check in round 0. actionNum: 4
+[ACTION]: player at 1 raisebet to 240 in round 1. actionNum: 5
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [raisebet: 1
+amount: 240
+pos: 1
+type: 1
+actionNum: 5
+], 2: [], 3: []}
+[]
+2720
+[]
+1620
+[1, 12]
+2060
+currpos = 2, playernum = 0, moneypot = 360, minbet = 240, last_raised = 240
+$$$ [MY ACTION] This client made a decision at pos 2
+[ACTION]: player at 2 callbet in round 1. actionNum: 6
+[ACTION]: player at 0 giveup in round 1. actionNum: 7
+[ACTION]: player at 1 raisebet to 80 in round 2. actionNum: 8
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [raisebet: 1
+amount: 240
+pos: 1
+type: 1
+actionNum: 5
+, callbet: 1
+amount: 240
+pos: 2
+type: 1
+actionNum: 6
+, giveup: 1
+type: 1
+actionNum: 7
+], 2: [raisebet: 1
+amount: 80
+pos: 1
+type: 1
+actionNum: 8
+], 3: []}
+[]
+1540
+[1, 12]
+1820
+currpos = 2, playernum = -1, moneypot = 680, minbet = 80, last_raised = 80
+$$$ [MY ACTION] This client made a decision at pos 2
+[ACTION]: player at 2 callbet in round 2. actionNum: 9
+[ACTION]: player at 1 check in round 3. actionNum: 10
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [raisebet: 1
+amount: 240
+pos: 1
+type: 1
+actionNum: 5
+, callbet: 1
+amount: 240
+pos: 2
+type: 1
+actionNum: 6
+, giveup: 1
+type: 1
+actionNum: 7
+], 2: [raisebet: 1
+amount: 80
+pos: 1
+type: 1
+actionNum: 8
+, callbet: 1
+amount: 80
+pos: 2
+type: 1
+actionNum: 9
+], 3: [check: 1
+pos: 1
+type: 1
+actionNum: 10
+]}
+[]
+1540
+[1, 12]
+1740
+currpos = 2, playernum = -1, moneypot = 760, minbet = 0, last_raised = 0
+$$$ [MY ACTION] This client made a invalid decision
+giveup=0, allin=0, check=0, callbet=0, raisebet=1, amount=0
+giveup=0, allin=0, check=0, callbet=1, raisebet=0, amount=0
+$$$ [MY ACTION] This client made a decision at pos 2
+[ACTION]: player at 2 check in round 3. actionNum: 11
+***********game over***************
+[SHARED CARDS] D2, S8, C2, D4, C4
+[PLAYER CARDS] Player: player: active = False, money = 2720, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 1540, bet = 0, allin = 0, Card: S4, HA
+[PLAYER CARDS] Player: player: active = True, money = 1740, bet = 0, allin = 0, Card: H2, S5
+
+
+$$$ Have money 1740 left
+This ai is begin at the pos 0
+pos 0: 01shouhu
+pos 1: 02shouhu
+pos 2: 03shouhu
+
+[USERNAME] {0: '01shouhu', 1: '02shouhu', 2: '03shouhu'}
+******client initialized****** My name:01shouhu Position:0
+[SET MONEY] Player at pos 0 has 1740
+[SET MONEY] Player at pos 1 has 2300
+[SET MONEY] Player at pos 2 has 2720
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+], 1: [], 2: [], 3: []}
+[32, 31]
+1740
+[]
+2280
+[]
+2680
+currpos = 0, playernum = 0, moneypot = 60, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 callbet in round 0. actionNum: 2
+[ACTION]: player at 1 callbet in round 0. actionNum: 3
+[ACTION]: player at 2 check in round 0. actionNum: 4
+[ACTION]: player at 1 raisebet to 120 in round 1. actionNum: 5
+[ACTION]: player at 2 callbet in round 1. actionNum: 6
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [raisebet: 1
+amount: 120
+pos: 1
+type: 1
+actionNum: 5
+, callbet: 1
+pos: 2
+type: 1
+actionNum: 6
+], 2: [], 3: []}
+[32, 31]
+1700
+[]
+2140
+[]
+2560
+currpos = 0, playernum = 0, moneypot = 360, minbet = 120, last_raised = 120
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 raisebet to 800 in round 1. actionNum: 7
+[ACTION]: player at 1 allin in round 1. actionNum: 8
+[ACTION]: player at 2 callbet in round 1. actionNum: 9
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, callbet: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [raisebet: 1
+amount: 120
+pos: 1
+type: 1
+actionNum: 5
+, callbet: 1
+pos: 2
+type: 1
+actionNum: 6
+, raisebet: 1
+amount: 800
+type: 1
+actionNum: 7
+, allin: 1
+pos: 1
+type: 1
+actionNum: 8
+, callbet: 1
+pos: 2
+type: 1
+actionNum: 9
+], 2: [], 3: []}
+[32, 31]
+900
+[]
+0
+[]
+420
+currpos = 0, playernum = 0, moneypot = 5440, minbet = 2260, last_raised = 1460
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 allin in round 1. actionNum: 10
+***********game over***************
+[SHARED CARDS] D9, H8, C2, C4, D4
+[PLAYER CARDS] Player: player: active = True, money = 0, bet = 0, allin = 1, Card: ST, C9
+[PLAYER CARDS] Player: player: active = True, money = 0, bet = 0, allin = 1, Card: H9, HT
+[PLAYER CARDS] Player: player: active = True, money = 420, bet = 0, allin = 0, Card: HA, S4
+
+
+$$$ Have money 0 left
+This ai is begin at the pos 2
+pos 0: 02shouhu
+pos 1: 03shouhu
+pos 2: 01shouhu
+
+[USERNAME] {0: '02shouhu', 1: '03shouhu', 2: '01shouhu'}
+******client initialized****** My name:01shouhu Position:2
+[SET MONEY] Player at pos 0 has 2000
+[SET MONEY] Player at pos 1 has 6760
+[SET MONEY] Player at pos 2 has 2000
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+***********game over***************
+[SHARED CARDS] D2, C6, H5, S4, DK
+[PLAYER CARDS] Player: player: active = False, money = 2000, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = False, money = 6740, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 1960, bet = 0, allin = 0, Card: CT, C8
+
+
+$$$ Have money 2020 left
+This ai is begin at the pos 0
+pos 0: 01shouhu
+pos 1: 03shouhu
+pos 2: 02shouhu
+
+[USERNAME] {0: '01shouhu', 1: '03shouhu', 2: '02shouhu'}
+******client initialized****** My name:01shouhu Position:0
+[SET MONEY] Player at pos 0 has 2020
+[SET MONEY] Player at pos 1 has 6740
+[SET MONEY] Player at pos 2 has 2000
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+], 1: [], 2: [], 3: []}
+[3, 51]
+2020
+[]
+6720
+[]
+1960
+currpos = 0, playernum = 0, moneypot = 60, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 callbet in round 0. actionNum: 2
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+[ACTION]: player at 2 check in round 0. actionNum: 4
+[ACTION]: player at 2 raisebet to 120 in round 1. actionNum: 5
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, giveup: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [raisebet: 1
+amount: 120
+pos: 2
+type: 1
+actionNum: 5
+], 2: [], 3: []}
+[3, 51]
+1980
+[]
+1840
+currpos = 0, playernum = -1, moneypot = 220, minbet = 120, last_raised = 120
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 raisebet to 800 in round 1. actionNum: 6
+[ACTION]: player at 2 allin in round 1. actionNum: 7
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, giveup: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [raisebet: 1
+amount: 120
+pos: 2
+type: 1
+actionNum: 5
+, raisebet: 1
+amount: 800
+type: 1
+actionNum: 6
+, allin: 1
+pos: 2
+type: 1
+actionNum: 7
+], 2: [], 3: []}
+[3, 51]
+1180
+[]
+0
+currpos = 0, playernum = -1, moneypot = 2860, minbet = 1960, last_raised = 1160
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 allin in round 1. actionNum: 8
+***********game over***************
+[SHARED CARDS] HJ, SQ, C4, CQ, S3
+[PLAYER CARDS] Player: player: active = True, money = 0, bet = 0, allin = 1, Card: C2, CA
+[PLAYER CARDS] Player: player: active = False, money = 6720, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 0, bet = 0, allin = 1, Card: DQ, DT
+
+
+$$$ Have money 20 left
+This ai is begin at the pos 1
+pos 0: 02shouhu
+pos 1: 01shouhu
+pos 2: 03shouhu
+
+[USERNAME] {0: '02shouhu', 1: '01shouhu', 2: '03shouhu'}
+******client initialized****** My name:01shouhu Position:1
+[SET MONEY] Player at pos 0 has 4020
+[SET MONEY] Player at pos 1 has 2020
+[SET MONEY] Player at pos 2 has 6720
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 callbet in round 0. actionNum: 2
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+], 1: [], 2: [], 3: []}
+[]
+3980
+[27, 6]
+2000
+[]
+6680
+currpos = 1, playernum = 0, moneypot = 100, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+[ACTION]: player at 2 check in round 0. actionNum: 4
+[ACTION]: player at 2 raisebet to 200 in round 1. actionNum: 5
+[ACTION]: player at 0 giveup in round 1. actionNum: 6
+***********game over***************
+[SHARED CARDS] H7, S5, D8, DA, D7
+[PLAYER CARDS] Player: player: active = False, money = 3980, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = False, money = 2000, bet = 0, allin = 0, Card: C8, D3
+[PLAYER CARDS] Player: player: active = True, money = 6480, bet = 0, allin = 0, Card: 
+
+
+$$$ Have money 2000 left
+This ai is begin at the pos 2
+pos 0: 03shouhu
+pos 1: 02shouhu
+pos 2: 01shouhu
+
+[USERNAME] {0: '03shouhu', 1: '02shouhu', 2: '01shouhu'}
+******client initialized****** My name:01shouhu Position:2
+[SET MONEY] Player at pos 0 has 6780
+[SET MONEY] Player at pos 1 has 3980
+[SET MONEY] Player at pos 2 has 2000
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+***********game over***************
+[SHARED CARDS] DT, C9, S9, H5, H8
+[PLAYER CARDS] Player: player: active = False, money = 6780, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = False, money = 3960, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 1960, bet = 0, allin = 0, Card: H7, SK
+
+
+$$$ Have money 2020 left
+This ai is begin at the pos 0
+pos 0: 01shouhu
+pos 1: 03shouhu
+pos 2: 02shouhu
+
+[USERNAME] {0: '01shouhu', 1: '03shouhu', 2: '02shouhu'}
+******client initialized****** My name:01shouhu Position:0
+[SET MONEY] Player at pos 0 has 2020
+[SET MONEY] Player at pos 1 has 6780
+[SET MONEY] Player at pos 2 has 3960
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+], 1: [], 2: [], 3: []}
+[12, 51]
+2020
+[]
+6760
+[]
+3920
+currpos = 0, playernum = 0, moneypot = 60, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 callbet in round 0. actionNum: 2
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+[ACTION]: player at 2 check in round 0. actionNum: 4
+[ACTION]: player at 2 check in round 1. actionNum: 5
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+, giveup: 1
+pos: 1
+type: 1
+actionNum: 3
+, check: 1
+pos: 2
+type: 1
+actionNum: 4
+], 1: [check: 1
+pos: 2
+type: 1
+actionNum: 5
+], 2: [], 3: []}
+[12, 51]
+1980
+[]
+3920
+currpos = 0, playernum = -1, moneypot = 100, minbet = 0, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 raisebet to 40 in round 1. actionNum: 6
+[ACTION]: player at 2 giveup in round 1. actionNum: 7
+***********game over***************
+[SHARED CARDS] C2, D6, S4, CK, D8
+[PLAYER CARDS] Player: player: active = True, money = 1940, bet = 0, allin = 0, Card: S5, CA
+[PLAYER CARDS] Player: player: active = False, money = 6760, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = False, money = 3920, bet = 0, allin = 0, Card: 
+
+
+$$$ Have money 2080 left
+This ai is begin at the pos 1
+pos 0: 02shouhu
+pos 1: 01shouhu
+pos 2: 03shouhu
+
+[USERNAME] {0: '02shouhu', 1: '01shouhu', 2: '03shouhu'}
+******client initialized****** My name:01shouhu Position:1
+[SET MONEY] Player at pos 0 has 3920
+[SET MONEY] Player at pos 1 has 2080
+[SET MONEY] Player at pos 2 has 6760
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, giveup: 1
+type: 1
+actionNum: 2
+], 1: [], 2: [], 3: []}
+[42, 7]
+2060
+[]
+6720
+currpos = 1, playernum = -1, moneypot = 60, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+***********game over***************
+[SHARED CARDS] H3, DT, DJ, HJ, ST
+[PLAYER CARDS] Player: player: active = False, money = 3920, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = False, money = 2060, bet = 0, allin = 0, Card: DQ, C3
+[PLAYER CARDS] Player: player: active = True, money = 6720, bet = 0, allin = 0, Card: 
+
+
+$$$ Have money 2060 left
+This ai is begin at the pos 0
+pos 0: 01shouhu
+pos 1: 03shouhu
+pos 2: 02shouhu
+
+[USERNAME] {0: '01shouhu', 1: '03shouhu', 2: '02shouhu'}
+******client initialized****** My name:01shouhu Position:0
+[SET MONEY] Player at pos 0 has 2060
+[SET MONEY] Player at pos 1 has 6780
+[SET MONEY] Player at pos 2 has 3920
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+], 1: [], 2: [], 3: []}
+[10, 32]
+2060
+[]
+6760
+[]
+3880
+currpos = 0, playernum = 0, moneypot = 60, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+[ACTION]: player at 1 callbet in round 0. actionNum: 3
+[ACTION]: player at 2 check in round 0. actionNum: 4
+[ACTION]: player at 1 check in round 1. actionNum: 5
+[ACTION]: player at 2 check in round 1. actionNum: 6
+[ACTION]: player at 1 check in round 2. actionNum: 7
+[ACTION]: player at 2 check in round 2. actionNum: 8
+[ACTION]: player at 1 check in round 3. actionNum: 9
+[ACTION]: player at 2 check in round 3. actionNum: 10
+***********game over***************
+[SHARED CARDS] H6, H9, DA, DQ, CK
+[PLAYER CARDS] Player: player: active = False, money = 2060, bet = 0, allin = 0, Card: D4, ST
+[PLAYER CARDS] Player: player: active = True, money = 6740, bet = 0, allin = 0, Card: DT, D7
+[PLAYER CARDS] Player: player: active = True, money = 3880, bet = 0, allin = 0, Card: D2, D6
+
+
+$$$ Have money 2060 left
+This ai is begin at the pos 1
+pos 0: 03shouhu
+pos 1: 01shouhu
+pos 2: 02shouhu
+
+[USERNAME] {0: '03shouhu', 1: '01shouhu', 2: '02shouhu'}
+******client initialized****** My name:01shouhu Position:1
+[SET MONEY] Player at pos 0 has 6740
+[SET MONEY] Player at pos 1 has 2060
+[SET MONEY] Player at pos 2 has 3960
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 callbet in round 0. actionNum: 2
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+], 1: [], 2: [], 3: []}
+[]
+6700
+[0, 23]
+2040
+[]
+3920
+currpos = 1, playernum = 0, moneypot = 100, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+[ACTION]: player at 2 check in round 0. actionNum: 4
+[ACTION]: player at 2 check in round 1. actionNum: 5
+[ACTION]: player at 0 check in round 1. actionNum: 6
+[ACTION]: player at 2 raisebet to 120 in round 2. actionNum: 7
+[ACTION]: player at 0 callbet in round 2. actionNum: 8
+[ACTION]: player at 2 check in round 3. actionNum: 9
+[ACTION]: player at 0 check in round 3. actionNum: 10
+***********game over***************
+[SHARED CARDS] DJ, SK, DT, SQ, CA
+[PLAYER CARDS] Player: player: active = True, money = 6580, bet = 0, allin = 0, Card: S7, S9
+[PLAYER CARDS] Player: player: active = False, money = 2040, bet = 0, allin = 0, Card: S2, C7
+[PLAYER CARDS] Player: player: active = True, money = 3800, bet = 0, allin = 0, Card: S6, HA
+
+
+$$$ Have money 2040 left
+This ai is begin at the pos 0
+pos 0: 01shouhu
+pos 1: 03shouhu
+pos 2: 02shouhu
+
+[USERNAME] {0: '01shouhu', 1: '03shouhu', 2: '02shouhu'}
+******client initialized****** My name:01shouhu Position:0
+[SET MONEY] Player at pos 0 has 2040
+[SET MONEY] Player at pos 1 has 6750
+[SET MONEY] Player at pos 2 has 3970
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+], 1: [], 2: [], 3: []}
+[3, 17]
+2040
+[]
+6730
+[]
+3930
+currpos = 0, playernum = 0, moneypot = 60, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 0
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+***********game over***************
+[SHARED CARDS] SQ, CA, H5, SJ, DJ
+[PLAYER CARDS] Player: player: active = False, money = 2040, bet = 0, allin = 0, Card: C2, H6
+[PLAYER CARDS] Player: player: active = False, money = 6730, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 3930, bet = 0, allin = 0, Card: 
+
+
+$$$ Have money 2040 left
+This ai is begin at the pos 2
+pos 0: 03shouhu
+pos 1: 02shouhu
+pos 2: 01shouhu
+
+[USERNAME] {0: '03shouhu', 1: '02shouhu', 2: '01shouhu'}
+******client initialized****** My name:01shouhu Position:2
+[SET MONEY] Player at pos 0 has 6730
+[SET MONEY] Player at pos 1 has 3990
+[SET MONEY] Player at pos 2 has 2040
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 giveup in round 0. actionNum: 2
+[ACTION]: player at 1 giveup in round 0. actionNum: 3
+***********game over***************
+[SHARED CARDS] D9, D5, SJ, C8, HQ
+[PLAYER CARDS] Player: player: active = False, money = 6730, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = False, money = 3970, bet = 0, allin = 0, Card: 
+[PLAYER CARDS] Player: player: active = True, money = 2000, bet = 0, allin = 0, Card: DK, H6
+
+
+$$$ Have money 2060 left
+This ai is begin at the pos 1
+pos 0: 02shouhu
+pos 1: 01shouhu
+pos 2: 03shouhu
+
+[USERNAME] {0: '02shouhu', 1: '01shouhu', 2: '03shouhu'}
+******client initialized****** My name:01shouhu Position:1
+[SET MONEY] Player at pos 0 has 3970
+[SET MONEY] Player at pos 1 has 2060
+[SET MONEY] Player at pos 2 has 6730
+[ACTION]: player at 1 raisebet to 20 in round 0. actionNum: 0
+[ACTION]: player at 2 raisebet to 40 in round 0. actionNum: 1
+[ACTION]: player at 0 callbet in round 0. actionNum: 2
+{0: [raisebet: 1
+amount: 20
+pos: 1
+type: 1
+, raisebet: 1
+amount: 40
+pos: 2
+type: 1
+actionNum: 1
+, callbet: 1
+type: 1
+actionNum: 2
+], 1: [], 2: [], 3: []}
+[]
+3930
+[30, 1]
+2040
+[]
+6690
+currpos = 1, playernum = 0, moneypot = 100, minbet = 40, last_raised = 40
+$$$ [MY ACTION] This client made a decision at pos 1
+[ACTION]: player at 1 giveup in round 0. actionNum: 3

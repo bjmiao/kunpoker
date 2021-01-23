@@ -2,7 +2,7 @@
 Author: bmiao
 Date: 2021-01-15 15:12:59
 LastEditors: zgong
-LastEditTime: 2021-01-22 18:14:02
+LastEditTime: 2021-01-23 23:20:14
 '''
 import pickle
 import random
@@ -12,13 +12,14 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from .card_value import aka_pair, card2id, \
-    card_encoding_5, id2card, select_largest, read_lookup_table
+from .card_value import (aka_pair, card2id, card_encoding_5, id2card,
+                         read_lookup_table, select_largest,card_encoding_2)
 
 LENGTH = 2598960
-PAIR_LEVEL = pd.read_csv(Path(__file__).parent/'pair_level.csv',index_col=0)
+PAIR_LEVEL = pd.read_csv(Path(__file__).parent/'pair_level.csv', index_col=0)
 
 LOOKUPTABLE = read_lookup_table()
+
 
 def read_pair_level(pairs):
     aka = aka_pair(pairs)
@@ -29,15 +30,18 @@ def read_pair_level(pairs):
         x, y = aka[1], aka[0]
     return PAIR_LEVEL.loc[x, y]
 
+
 def gen_level_dict():
-    level_dict = {i:[] for i in range(1,7)}
-    for cards in combinations(range(52),2):
+    level_dict = {i: [] for i in range(1, 7)}
+    for cards in combinations(range(52), 2):
         cards = sorted(cards)
-        level = read_pair_level(cards)    
+        level = read_pair_level(cards)
         level_dict[level].append(cards)
     return level_dict
 
+
 PAIR_LEVEL_DICT = gen_level_dict()
+
 
 def select_largest(all_cards, lookup_table):
     if len(all_cards) < 5:
@@ -46,11 +50,12 @@ def select_largest(all_cards, lookup_table):
     max_val_hand = None
     for hand in combinations(all_cards, 5):
         hand = sorted(hand)
-        val = lookup_table[encoding(hand)]
+        val = lookup_table[card_encoding_5(hand)]
         if val > max_val:
             max_val = val
             max_val_hand = hand
     return max_val_hand, max_val / LENGTH
+
 
 def MonteCarlo(heap, mycards):
     random.shuffle(heap)
@@ -59,10 +64,11 @@ def MonteCarlo(heap, mycards):
     max_val_hand, max_val = select_largest(mycards, LOOKUPTABLE)
     return max_val
 
-def MonteCarlo_compare(heap, mycards,oppsite_card_range=[]):
+
+def MonteCarlo_compare(heap, mycards, oppsite_card_range=[]):
     random.shuffle(heap)
-    oppsite_hand = [-1,-1]
-    if len(oppsite_card_range)==0:
+    oppsite_hand = [-1, -1]
+    if len(oppsite_card_range) == 0:
         oppsite_hand[0] = heap.pop()
         oppsite_hand[1] = heap.pop()
     else:
@@ -77,15 +83,16 @@ def MonteCarlo_compare(heap, mycards,oppsite_card_range=[]):
     oppsite = mycards.copy()
     oppsite[0] = oppsite_hand[0]
     oppsite[1] = oppsite_hand[1]
-    
+
     while len(mycards) != 7:
         share_card = heap.pop()
         mycards.append(share_card)
         oppsite.append(share_card)
 
     max_val_hand, max_val = select_largest(mycards, LOOKUPTABLE)
-    oppsite_val_hand,oppsite_max_val = select_largest(oppsite,LOOKUPTABLE)
-    return max_val>oppsite_max_val
+    oppsite_val_hand, oppsite_max_val = select_largest(oppsite, LOOKUPTABLE)
+    return max_val > oppsite_max_val
+
 
 def test():
     cards = ['C2', 'S3', 'S2', 'S4', 'H3']

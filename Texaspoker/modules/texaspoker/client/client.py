@@ -42,6 +42,7 @@ from AI.v1_1 import ai as ai_1_1
 from AI.v1_all_in import ai as ai_allin
 from AI.v1_giveup import ai as ai_giveup
 from AI.v2 import ai as ai_2
+from AI.v2_2 import ai as ai_2_2
 # *******************************************************************************************
 
 
@@ -53,7 +54,8 @@ from AI.v2 import ai as ai_2
 
 # **************************************modify here to set address and port ***********************
 address = '47.103.23.116'
-port = 56703
+port = 56714
+print(port)
 # *************************************************************************************************
 
 
@@ -193,7 +195,7 @@ class Client(object):
                 self.print_stateupdate(res)
                 self.state.currpos = res.pos
                 self._decision_so_far.append(res)
-                self.state.decision_history.append(res)
+                self.state.decision_history[self.state.turnNum].append(res)
                 # self.logger.info(str(self._decision_so_far))
                 if res.giveup == 1:
                     self.state.player[self.state.currpos].active = False
@@ -419,6 +421,8 @@ if __name__ == '__main__':
         ai = ai_giveup
     elif (ai_str == '2'):
         ai = ai_2
+    elif (ai_str == '2.2'):
+        ai = ai_2_2
     else:
         raise NotImplementedError
 

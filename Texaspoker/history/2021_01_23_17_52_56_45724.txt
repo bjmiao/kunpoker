@@ -1,0 +1,25 @@
+3,40,0 
+01shouhu,02shouhu,03shouhu
+15880,2040,6100
+15880,2040,6100
+0,0,1,raisebet,20,1
+0,1,2,raisebet,40,1
+0,2,0,callbet,0,1
+0,3,1,callbet,0,1
+0,4,2,check,0,1
+1,5,1,check,0,1
+1,6,2,check,0,1
+1,7,0,check,0,1
+2,8,1,check,0,1
+2,9,2,raisebet,160,1
+2,10,0,raisebet,320,1
+2,11,1,callbet,0,1
+2,12,2,raisebet,1720,1
+2,13,0,raisebet,3120,1
+2,14,1,allin,0,1
+2,15,2,allin,0,1
+2,16,0,raisebet,9000,1
+player: active = True, money = 6840, bet = 0, allin = 0
+player: active = True, money = 0, bet = 0, allin = 1
+player: active = True, money = 0, bet = 0, allin = 1
+6840,0,0

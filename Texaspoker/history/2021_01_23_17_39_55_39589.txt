@@ -1,0 +1,13 @@
+3,40,0 
+01shouhu,03shouhu,02shouhu
+1940,3940,2140
+1940,3940,2140
+0,0,1,raisebet,20,1
+0,1,2,raisebet,40,1
+0,2,0,raisebet,120,1
+0,3,1,fold,0,1
+0,4,2,fold,0,1
+player: active = True, money = 1820, bet = 0, allin = 0
+player: active = False, money = 3920, bet = 0, allin = 0
+player: active = False, money = 2100, bet = 0, allin = 0
+1820,3920,2100

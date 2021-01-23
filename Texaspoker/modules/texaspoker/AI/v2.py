@@ -2,7 +2,7 @@
 Author: zgong
 Date: 2021-01-15 15:19:34
 LastEditors: zgong
-LastEditTime: 2021-01-23 23:06:00
+LastEditTime: 2021-01-24 00:31:59
 '''
 import random
 import pickle
@@ -24,17 +24,14 @@ class AI_Client():
 
 
 def ai(id, state):
-    print(state._decision_so_far)
+    # print(state.decision_history)
     
-    for player in state.player:
-        if player.active:
-            print(player.cards)
-            print(player.money)
-    print(state)
+    # for player in state.player:
+    #     if player.active:
+    #         print(player.cards)
+    #         print(player.money)
+    # print(state)
 
-    if state.turnNum == 2:
-        state.dump('state.pkl')
-        raise Exception
     remain_card = list(range(0, 52))
     cards = state.player[id].cards + state.sharedcards
     num = len(cards)  # 当前状态
