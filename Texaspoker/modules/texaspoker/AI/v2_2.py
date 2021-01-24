@@ -13,8 +13,8 @@ import numpy as np
 import pandas as pd
 from lib.card_value import aka_pair, card_encoding_5
 from lib.client_lib import Decision, Hand, Player, State
-from lib.read_lookup_table import (PAIR_LEVEL_DICT, MonteCarlo,
-                                   MonteCarlo_compare, read_pair_level, get_card_range)
+from lib.read_lookup_table import (PAIR_LEVEL_DICT, calculate_win_rate,
+                                read_pair_level, get_card_range)
 
 FRESH_LEVEL = PAIR_LEVEL_DICT[1] + \
     PAIR_LEVEL_DICT[2]+PAIR_LEVEL_DICT[3]+PAIR_LEVEL_DICT[4]+PAIR_LEVEL_DICT[5]
@@ -91,7 +91,7 @@ class PlayerInfo():
                 elif raise_dic[self.pos] == 3:
                     self.pair_range = PAIR_LEVEL_DICT[1] + \
                         PAIR_LEVEL_DICT[2]+PAIR_LEVEL_DICT[3]
-                elif raise_dic[self.pos] == 4:
+                elif raise_dic[self.pos] >= 4:
                     self.pair_range = PAIR_LEVEL_DICT[1] + PAIR_LEVEL_DICT[2]
 
             else:
@@ -101,7 +101,7 @@ class PlayerInfo():
                     threshold = 0.1
                 elif raise_dic[self.pos] == 1:
                     threshold = 0.3
-                elif raise_dic[self.pos] == 2:
+                elif raise_dic[self.pos] >= 2:
                     threshold = 0.1
                 if threshold > 0:
                     print(f'update card_range:{threshold}')
@@ -222,7 +222,8 @@ def ai(id, state):
                 nowturn_play_info_name.append(username)
 
     # print(player_actions)
-    cards = state.player[id].cards + state.sharedcards
+    my_cards = state.player[id].cards
+    shared_cards = state.sharedcards
 
     pot = state.moneypot  # 当前底池
     decision = Decision()
@@ -264,7 +265,7 @@ def ai(id, state):
             call_pairs = [1]
             fold_pairs = [2, 3, 4, 5, 6]
 
-        level = read_pair_level(cards)
+        level = read_pair_level(my_cards)
         if level in raise_pairs:
             alpha = random.randint(1, 3)*last_raised
             decision.raisebet = 1
@@ -286,11 +287,13 @@ def ai(id, state):
             elif action[0] == 'allin':
                 allin_num += 1
 
+        # TODO(half range, half uniform)
         oppsite_card_range = [getattr(
-            global_player_info, username).pair_range for username in nowturn_play_info_name]
+            global_player_info, username).pair_range
+            for username in nowturn_play_info_name]
         oppsite_card_range = reduce(list.__add__, oppsite_card_range)
         print(f'oppsite_card:{len(oppsite_card_range)}')
-        win_rate = calculate_win_rate(state.sharedcards, state.player[id].cards, oppsite_card_range)
+        win_rate = calculate_win_rate(shared_cards, my_cards, oppsite_card_range)
         
         if allin_num == 1:
             raise_threshold = 1
