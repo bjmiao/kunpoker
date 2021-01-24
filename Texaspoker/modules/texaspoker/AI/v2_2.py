@@ -309,7 +309,7 @@ def ai(id, state):
             my_bluff_rate = win_rate / 3.5
             if random.random() < my_bluff_rate:
                 decision.raisebet = 1
-                decision.amount += int(last_raised + delta + totalbet)
+                decision.amount = int(last_raised + delta + totalbet)
                 print("!!!!!!!!!!!!!!!my bluff !!!!!!!!!!!!!1")
             else:
                 expect_call = win_rate*(pot)+(1-win_rate)*(-delta)
