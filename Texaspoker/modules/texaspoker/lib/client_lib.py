@@ -81,6 +81,20 @@ def id2num(card):
     return card // 4
 
 
+COLOR = ['C', 'D', 'H', 'S']
+NUM = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
+
+def id2card(card_id):
+    color = id2color(card_id)
+    num = id2num(card_id)
+    return (COLOR[color]+NUM[num])
+
+def card2id(card):
+    color = card[0]
+    num = card[1]
+    return NUM.index(num) * 4 + COLOR.index(color)
+
+
 '''
 hand.level
 牌面等级：高牌 1	一对 2	两对 3	三条 4	顺子 5	同花 6	葫芦 7	四条 8	同花顺 9	皇家同花顺：10
@@ -469,7 +483,13 @@ class State(object):
                     f.write("%d,%d,%d,%s,%d,%d" % (_term,_actionNum, _pos,
                             action, _amount, _type) + "\n")
             for p in self.player:
-                f.write(str(p) + "\n")
+                f.write(str(p))
+                for card in p.cards:
+                    f.write(id2card(card) + " ")
+                f.write("\n")
+            for card in self.sharedcards:
+                f.write(id2card(card) + " ")
+            f.write("\n")
             f.write(','.join([str(p.money) for p in self.player])+"\n")
 
 class Decision(object):
