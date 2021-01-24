@@ -106,7 +106,7 @@ class PlayerInfo():
                 if threshold > 0:
                     print(f'update card_range:{threshold}')
                     card_list = get_card_range(
-                        shared_card, remain_card_range=self.pair_range, threshold=threshold, nsamples=50)
+                        shared_card, remain_card_range=self.pair_range, threshold=threshold, nsamples=200)
                     self.pair_range = [value_cards[1]
                                        for value_cards in card_list]
                     print(len(self.pair_range))

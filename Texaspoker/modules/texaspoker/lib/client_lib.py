@@ -480,12 +480,12 @@ class State(object):
                         action = 'fold'
                     elif int(decision.allin) == 1:
                         action = 'allin'
-                    f.write("%d,%d,%d,%s,%d,%d" % (_term,_actionNum, _pos,
+                    f.write("%d,%d,%d,%s,%d,%d" % (_term, _actionNum, _pos,
                             action, _amount, _type) + "\n")
             for p in self.player:
                 f.write(str(p))
                 for card in p.cards:
-                    f.write(id2card(card) + " ")
+                    f.write(" "+id2card(card))
                 f.write("\n")
             for card in self.sharedcards:
                 f.write(id2card(card) + " ")

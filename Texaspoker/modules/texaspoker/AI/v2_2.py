@@ -106,7 +106,7 @@ class PlayerInfo():
                 if threshold > 0:
                     print(f'update card_range:{threshold}')
                     card_list = get_card_range(
-                        shared_card, remain_card_range=self.pair_range, threshold=threshold, nsamples=50)
+                        shared_card, remain_card_range=self.pair_range, threshold=threshold, nsamples=100)
                     self.pair_range = [value_cards[1]
                                        for value_cards in card_list]
                     print(len(self.pair_range))
@@ -299,23 +299,31 @@ def ai(id, state):
             raise_threshold = 1
 
         elif raise_num == 0:
-            raise_threshold = 0.6
+            raise_threshold = 0.55
         elif raise_num == 1:
             raise_threshold = 0.8
         elif raise_num >= 2:
             raise_threshold = 0.9
 
         if win_rate <= raise_threshold:
-            expect_call = win_rate*(pot)+(1-win_rate)*(-delta)
-            if expect_call > 0:
-                decision.callbet = 1
+            my_bluff_rate = win_rate / 3.5
+            if random.random() < my_bluff_rate:
+                decision.raisebet = 1
+                decision.amount += int(last_raised + delta + totalbet)
+                print("!!!!!!!!!!!!!!!my bluff !!!!!!!!!!!!!1")
             else:
-                decision.giveup = 1
+                expect_call = win_rate*(pot)+(1-win_rate)*(-delta)
+                if expect_call > 0:
+                    decision.callbet = 1
+                else:
+                    decision.giveup = 1
 
         raise_smooth = np.array([0.33, 0.5, 0.7, 1, 1.5, 2])
         if win_rate > raise_threshold:
             ratio = (1-win_rate)/(2*win_rate-1)
-            ratio = raise_smooth[(ratio > raise_smooth).sum()]
+            ratio = min(ratio, 2)
+
+            ratio = raise_smooth[(ratio >= raise_smooth).sum()]
             alpha = ratio*(pot+delta)  # 打弃牌率？
             alpha = max((alpha//state.bigBlind) * state.bigBlind, last_raised)
             decision.raisebet = 1
