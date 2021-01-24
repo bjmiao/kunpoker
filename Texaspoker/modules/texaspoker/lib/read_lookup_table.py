@@ -94,13 +94,15 @@ def MonteCarlo_compare(heap, shared_card, mycards, oppsite_cards):
     need_card = 5 - len(shared_card)
     new_card = random.sample(heap, need_card)
 
-    max_val_hand, max_val = select_largest(shared_card + new_card + mycards, LOOKUPTABLE)
-    oppsite_val_hand, oppsite_max_val = select_largest(shared_card + new_card + oppsite_cards, LOOKUPTABLE)
+    max_val_hand, max_val = select_largest(
+        list(shared_card) + list(mycards) + new_card, LOOKUPTABLE)
+    oppsite_val_hand, oppsite_max_val = select_largest(
+        list(shared_card) + list(oppsite_cards) + new_card, LOOKUPTABLE)
     return max_val > oppsite_max_val
 
 
 def calculate_win_rate(shared_cards, my_cards, oppsite_card_range=None,
-                        nsamples=1000): 
+                        nsamples=1000):
     ''' 
         shared_card :
         my_car

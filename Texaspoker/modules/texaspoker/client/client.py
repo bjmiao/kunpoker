@@ -43,6 +43,7 @@ from AI.v1_all_in import ai as ai_allin
 from AI.v1_giveup import ai as ai_giveup
 from AI.v2 import ai as ai_2
 from AI.v2_2 import ai as ai_2_2
+from AI.v2_3 import ai as ai_2_3
 # *******************************************************************************************
 
 
@@ -54,7 +55,7 @@ from AI.v2_2 import ai as ai_2_2
 
 # **************************************modify here to set address and port ***********************
 address = '47.103.23.116'
-port = 56714
+port = 56717
 print(port)
 # *************************************************************************************************
 
@@ -423,6 +424,8 @@ if __name__ == '__main__':
         ai = ai_2
     elif (ai_str == '2.2'):
         ai = ai_2_2
+    elif (ai_str == '2.3'):
+        ai = ai_2_3
     else:
         raise NotImplementedError
 
