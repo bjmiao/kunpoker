@@ -2,7 +2,7 @@
 Author: zgong
 Date: 2021-01-15 15:19:34
 LastEditors: zgong
-LastEditTime: 2021-01-24 01:48:35
+LastEditTime: 2021-01-24 10:58:23
 '''
 import copy
 import pickle
@@ -193,7 +193,7 @@ def ai(id, state):
     else:
         for pos, player in enumerate(state.player):
             username = player.username
-            play_info = getattr(global_player_info, username, -1)
+            play_info = getattr(global_player_info, username)
             play_info.update_action(pos, nowturn_actions, player_actions[pos])
             if play_info.active:
                 nowturn_play_info_name.append(username)
@@ -207,7 +207,7 @@ def ai(id, state):
     totalbet = state.player[state.currpos].bet
     delta = state.minbet - totalbet
     if delta >= state.player[state.currpos].money:
-        delta = state.player[state.currpos].money
+        delta = state.player[state.currpos].money ## allin
 
     if nowturn == 0:
         last_raised = state.last_raised
@@ -249,10 +249,8 @@ def ai(id, state):
         elif level in call_pairs:
             decision.callbet = 1
         elif level in fold_pairs:
-            if delta == 0:
-                decision.callbet = 1
-            else:
-                decision.giveup = 1
+            decision.giveup = 1
+
     else:
         last_raised = state.last_raised
 
@@ -269,32 +267,44 @@ def ai(id, state):
             global_player_info, username).pair_range for username in nowturn_play_info_name]
         oppsite_card_range = reduce(list.__add__, oppsite_card_range)
         print(f'oppsite_card:{len(oppsite_card_range)}')
-
         win_rate = calculate_win_rate(cards, oppsite_card_range)
+        
+        if allin_num == 1:
+            raise_threshold = 1
+        
+        elif raise_num == 0:
+            raise_threshold = 0.6
+        elif raise_num == 1:
+            raise_threshold = 0.8
+        elif raise_num >= 2:
+            raise_threshold = 0.9
 
-        if win_rate < 0.5:
+        if win_rate <= raise_threshold:
             expect_call = win_rate*(pot)+(1-win_rate)*(-delta)
             if expect_call > 0:
                 decision.callbet = 1
             else:
-                if delta == 0:
-                    decision.callbet = 1
-                else:
-                    decision.giveup = 1
+                decision.giveup = 1
 
-        if win_rate > 0.5:
-            # ratio = (1-win_rate)/(2*win_rate-1)
-            # if ratio >
-            alpha = min((1-win_rate)/(2*win_rate-1), 2)*(pot+delta)  # 打弃牌率？
-            alpha = (alpha//state.bigBlind) * state.bigBlind
+        raise_smooth = np.array([0.33,0.5,0.7,1,1.5,2])
+        if win_rate > raise_threshold:
+            ratio = (1-win_rate)/(2*win_rate-1)
+            ratio = raise_smooth[(ratio>raise_smooth).sum()]
+            alpha = ratio*(pot+delta)  # 打弃牌率？
+            alpha = max((alpha//state.bigBlind) * state.bigBlind,last_raised)
             decision.raisebet = 1
             decision.amount = int(alpha+delta+totalbet)
+        
 
+    if decision.giveup == 1 and (delta == 0): ##不需要筹码，肯定进
+        decision.callbet = 1
+        decision.giveup = 1
+        
     if decision.callbet == 1 and delta == state.player[state.currpos].money:
         decision.callbet = 0
         decision.allin = 1
 
-    global_player_info.pickle('infos.pkl')
+    #global_player_info.pickle('infos.pkl')
     return decision
 
 
