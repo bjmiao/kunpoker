@@ -275,67 +275,68 @@ def generate_hand_strength_lookup_table():
 #         pickle.dump(table_5_in_7, f)
 
 
-def generate_2v2_table():
-    ''' To generate a 2v2 table.
-    It can show that at the beginning,
-        the winning expctation of each two pairs (AA v.s. KK) 
-    '''
-    LOOKUP_TABLE = read_lookup_table()
-    expectation_table = {}
+# def generate_2v2_table():
+#     ''' To generate a 2v2 table.
+#     It can show that at the beginning,
+#         the winning expctation of each two pairs (AA v.s. KK) 
+#     '''
+#     LOOKUP_TABLE = read_lookup_table()
+#     expectation_table = {}
 
-    for _ in range(1):
-        cards = random.sample(range(52), 4)
-        my_card = [cards[0], cards[1]]
-        other_card = [cards[2], cards[3]]
+#     for _ in range(1):
+#         cards = random.sample(range(52), 4)
+#         my_card = [cards[0], cards[1]]
+#         other_card = [cards[2], cards[3]]
 
-        my_card_idx = card_encoding_2(my_card)
-        other_card_idx = card_encoding_2(other_card)
+#         my_card_idx = card_encoding_2(my_card)
+#         other_card_idx = card_encoding_2(other_card)
 
-        print([id2card(x) for x in my_card], my_card_idx)
-        print([id2card(x) for x in other_card], other_card_idx)
+#         print([id2card(x) for x in my_card], my_card_idx)
+#         print([id2card(x) for x in other_card], other_card_idx)
 
-        if my_card_idx > other_card_idx:
-            continue
+#         if my_card_idx > other_card_idx:
+#             continue
 
-        if (my_card_idx, other_card_idx) in expectation_table.keys():
-            continue
-        deck = list(range(52))
-        for card in cards:
-            deck.remove(card)
-        winning, loss, tie = 0, 0, 0
-        cnt = 0
-        # for cnt in range(100000):
-        for shared_card in combinations(deck, 5):
-            # shared_card = random.sample(deck, 5)
-            my_largest_hand, my_value = select_largest([*shared_card, *my_card], LOOKUP_TABLE)
-            other_largest_hand, other_value = select_largest([*shared_card, *other_card], LOOKUP_TABLE)
+#         if (my_card_idx, other_card_idx) in expectation_table.keys():
+#             continue
+#         deck = list(range(52))
+#         for card in cards:
+#             deck.remove(card)
+#         winning, loss, tie = 0, 0, 0
+#         cnt = 0
+#         # for cnt in range(100000):
+#         for shared_card in combinations(deck, 5):
+#             # shared_card = random.sample(deck, 5)
+#             my_largest_hand, my_value = select_largest([*shared_card, *my_card], LOOKUP_TABLE)
+#             other_largest_hand, other_value = select_largest([*shared_card, *other_card], LOOKUP_TABLE)
             
-            # print([id2card(x) for x in shared_card])
-            if (my_value > other_value):
-                winning += 1
-            elif (my_value < other_value):
-                loss += 1
-            elif (my_value == other_value):
-                tie += 1
-            cnt += 1
-            if (cnt % 100000 == 0):
-                print(cnt)
-            # if (cnt == 100000):
-                # break
+#             # print([id2card(x) for x in shared_card])
+#             if (my_value > other_value):
+#                 winning += 1
+#             elif (my_value < other_value):
+#                 loss += 1
+#             elif (my_value == other_value):
+#                 tie += 1
+#             cnt += 1
+#             if (cnt % 100000 == 0):
+#                 print(cnt)
+#             # if (cnt == 100000):
+#                 # break
 
-        expectation = (winning * 2 + tie) / (winning + loss + tie) / 2 
-        # expectation \in [0, 1]. 1 means must win. 0 means must lose.
-        # 0.5 means that it will win have of the pot
-        print(winning, loss, tie)
-        print(winning/cnt, loss/cnt, tie/cnt)
-        expectation_table[(my_card_idx, other_card_idx)] = expectation
+#         expectation = (winning * 2 + tie) / (winning + loss + tie) / 2 
+#         # expectation \in [0, 1]. 1 means must win. 0 means must lose.
+#         # 0.5 means that it will win have of the pot
+#         print(winning, loss, tie)
+#         print(winning/cnt, loss/cnt, tie/cnt)
+#         expectation_table[(my_card_idx, other_card_idx)] = expectation
 
-    print(expectation_table)
-    with open("2v2_table.pkl", "wb") as f:
-        pass
+#     print(expectation_table)
+#     with open("2v2_table.pkl", "wb") as f:
+#         pass
 
 if __name__ == "__main__":
     # generate_hand_strength_lookup_table()
     # generate_5_in_7_table()
-    generate_2v2_table()
+    # generate_2v2_table()
+    pass
 

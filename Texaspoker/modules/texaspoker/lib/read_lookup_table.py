@@ -2,7 +2,7 @@
 Author: bmiao
 Date: 2021-01-15 15:12:59
 LastEditors: zgong
-LastEditTime: 2021-01-23 23:20:14
+LastEditTime: 2021-01-24 13:24:43
 '''
 import pickle
 import random
@@ -11,11 +11,11 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from .card_value import (aka_pair, card2id, card_encoding_5, id2card,
+
 # from card_value import (aka_pair, card2id, card_encoding_5, id2card,
+from .card_value import (aka_pair, card2id, card_encoding_5, id2card,
                          read_lookup_table, select_largest, card_encoding_2)
 
-LENGTH = 2598960
 PAIR_LEVEL = pd.read_csv(Path(__file__).parent/'pair_level.csv', index_col=0)
 
 
@@ -79,7 +79,6 @@ def MonteCarlo(heap, mycards):
     ''' Monte Carlo single time'''
     need_card = 7 - len(mycards)
     new_card = random.sample(heap, need_card)
-# LOOKUPTABLE = read_lookup_table()
 
     max_val_hand, max_val = select_largest(new_card + list(mycards), LOOKUPTABLE)
     return max_val
