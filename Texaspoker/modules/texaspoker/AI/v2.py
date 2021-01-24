@@ -13,7 +13,7 @@ import copy
 
 from lib.card_value import aka_pair, card_encoding_5
 from lib.client_lib import Decision, Hand, Player, State
-from lib.read_lookup_table import (MonteCarlo, MonteCarlo_compare,
+from lib.read_lookup_table import (calculate_win_rate,
                                    read_pair_level,
                                    PAIR_LEVEL_DICT)
 
@@ -78,8 +78,7 @@ def ai(id, state):
                               for i in range(len(oppsite_card_range)) if valid_ls[i]]
         # 模拟发牌10000次
 
-        win_rate = np.mean([MonteCarlo_compare(remain_card[:], cards[:], oppsite_card_range)
-                            for i in range(10000)])
+        win_rate = calculate_win_rate(state.sharedcards, state.player[id].cards, oppsite_card_range)
 
         if win_rate < 0.5:
             expect_call = win_rate*(pot)+(1-win_rate)*(-delta)

@@ -146,7 +146,6 @@ def judge_card_level(card_list):
 def select_largest(all_cards, lookup_table):
     '''
     select the largest from 5, 6 or 7 cards
-    
     '''
     LENGTH = 2598960
 
@@ -160,17 +159,13 @@ def select_largest(all_cards, lookup_table):
         if val > max_val:
             max_val = val
             max_val_hand = hand
-    return max_val_hand, max_val / LENGTH
+    return max_val_hand, max_val  # / LENGTH
 
 
-def read_lookup_table(filename="lookup_table.pkl"):
-    ''' read the look up table. That'''
-
-    with open(Path(__file__).parent/filename, "rb") as f:
-        lookup_table = pickle.load(f)
-    return lookup_table
-
-
+# def select_largest_5in7_fast(all_cards, lookup_table_5in7 )
+#     ''' 
+#    select 5 in 7 by looking up in the table
+#    ''' 
 def compare_level(l1, l2):
     if (l1[0] < l2[0]):
         return -1
@@ -183,15 +178,38 @@ def compare_level(l1, l2):
             return -1
     return 0
 
+
 def card_encoding_2(card):
     a = (1 << card[0]) | (1 << card[1])
     return a
 
+
 def card_encoding_5(card):
     # a = 0
     # for card in cards:
-    a =  (1 << card[0]) | (1 << card[1]) | (1 << card[2]) | (1 << card[3]) | (1 << card[4])
+    a = (1 << card[0]) | (1 << card[1]) | (1 << card[2]) | (1 << card[3]) \
+                | (1 << card[4])
     return a
+
+
+def card_encoding_7(card):
+    a = (1 << card[0]) | (1 << card[1]) | (1 << card[2]) | (1 << card[3]) \
+                | (1 << card[4]) | (1 << card[5]) | (1 << card[6])
+    return a
+
+
+def read_lookup_table(filename="lookup_table.pkl"):
+    ''' read the look up table. That'''
+    with open(Path(__file__).parent/filename, "rb") as f:
+        lookup_table = pickle.load(f)
+    return lookup_table
+
+
+def read_5_in_7_table(filename="5_in_7_table.pkl"):
+    ''' read the 5in7 table'''
+    with open(Path(__file__).parent/filename, "rb") as f:
+        table = pickle.load(f)
+    return table
 
 
 def generate_hand_strength_lookup_table():
@@ -237,6 +255,26 @@ def generate_hand_strength_lookup_table():
     with open("lookup_table.pkl", "wb") as f:
         pickle.dump(lookup_table, f)
 
+# def generate_5_in_7_table():
+#     # this table is super large
+#     LOOKUP_TABLE = read_lookup_table()
+
+#     table_5_in_7 = {}
+#     cnt = 0
+#     for cards7 in combinations(range(52), 7):
+#         coding7 = card_encoding_7(cards7)
+
+#         max_val_hand, max_val = select_largest(cards7, LOOKUP_TABLE)
+#         coding5 = card_encoding_5(max_val_hand)
+#         table_5_in_7[coding7] = (coding5, max_val)
+#         # print(max_val_hand, max_val)
+#         cnt += 1
+#         if (cnt % 100000 == 0):
+#             print(cnt)
+#     with open("5_in_7_table.pkl", "wb") as f:
+#         pickle.dump(table_5_in_7, f)
+
+
 def generate_2v2_table():
     ''' To generate a 2v2 table.
     It can show that at the beginning,
@@ -261,14 +299,11 @@ def generate_2v2_table():
 
         if (my_card_idx, other_card_idx) in expectation_table.keys():
             continue
-   
         deck = list(range(52))
         for card in cards:
             deck.remove(card)
-    
         winning, loss, tie = 0, 0, 0
         cnt = 0
-
         # for cnt in range(100000):
         for shared_card in combinations(deck, 5):
             # shared_card = random.sample(deck, 5)
@@ -296,10 +331,11 @@ def generate_2v2_table():
         expectation_table[(my_card_idx, other_card_idx)] = expectation
 
     print(expectation_table)
-    with open("2v2_table.pkl", "wb"):
+    with open("2v2_table.pkl", "wb") as f:
         pass
 
 if __name__ == "__main__":
     # generate_hand_strength_lookup_table()
-
+    # generate_5_in_7_table()
     generate_2v2_table()
+

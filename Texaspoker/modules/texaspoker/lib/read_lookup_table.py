@@ -11,15 +11,15 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-# from .card_value import (aka_pair, card2id, card_encoding_5, id2card,
-from card_value import (aka_pair, card2id, card_encoding_5, id2card,
+from .card_value import (aka_pair, card2id, card_encoding_5, id2card,
+# from card_value import (aka_pair, card2id, card_encoding_5, id2card,
                          read_lookup_table, select_largest, card_encoding_2)
 
 LENGTH = 2598960
 PAIR_LEVEL = pd.read_csv(Path(__file__).parent/'pair_level.csv', index_col=0)
 
-LOOKUPTABLE = read_lookup_table()
 
+LOOKUPTABLE = read_lookup_table()
 
 def read_pair_level(pairs):
     aka = aka_pair(pairs)
@@ -43,7 +43,7 @@ def gen_level_dict():
 PAIR_LEVEL_DICT = gen_level_dict()
 
 
-def get_card_range(shared_card, remain_card_range = None, threshold=0.3, nsamples=1000):
+def get_card_range(shared_card, remain_card_range=None, threshold=0.3, nsamples=1000):
     ''' given shared card, return the strongests hands'''
     deck = list(range(52))
     for card in shared_card:
@@ -75,57 +75,80 @@ def get_card_range(shared_card, remain_card_range = None, threshold=0.3, nsample
     return hand_value_pair[:int(threshold*len(hand_value_pair))]
 
 
-def select_largest(all_cards, lookup_table):
-    if len(all_cards) < 5:
-        raise ValueError("Cards number is less then 5")
-    max_val = -1
-    max_val_hand = None
-    # print(all_cards)
-    for hand in combinations(all_cards, 5):
-        hand = sorted(hand)
-        val = lookup_table[card_encoding_5(hand)]
-        if val > max_val:
-            max_val = val
-            max_val_hand = hand
-    return max_val_hand, max_val / LENGTH
-
-
 def MonteCarlo(heap, mycards):
     ''' Monte Carlo single time'''
-    print(heap, mycards)
     need_card = 7 - len(mycards)
     new_card = random.sample(heap, need_card)
+# LOOKUPTABLE = read_lookup_table()
+
     max_val_hand, max_val = select_largest(new_card + list(mycards), LOOKUPTABLE)
     return max_val
 
 
-def MonteCarlo_compare(heap, mycards, oppsite_card_range=[]):
-    random.shuffle(heap)
-    oppsite_hand = [-1, -1]
-    if len(oppsite_card_range) == 0:
-        oppsite_hand[0] = heap.pop()
-        oppsite_hand[1] = heap.pop()
-    else:
-        while True:
-            oppsite_hand = random.choice(oppsite_card_range)
-            if (oppsite_hand[0] in heap) and (oppsite_hand[1] in heap):
-                heap.remove(oppsite_hand[0])
-                heap.remove(oppsite_hand[1])
-                random.shuffle(heap)
-                break
+def MonteCarlo_compare(heap, shared_card, mycards, oppsite_cards):
+    ''' 
+    heap: remaining deck
+        shared_card: shared card
+        mycard: my card
+        oppsite_card_range: the pool to select oppsite card
+    '''
+    need_card = 5 - len(shared_card)
+    new_card = random.sample(heap, need_card)
 
-    oppsite = mycards.copy()
-    oppsite[0] = oppsite_hand[0]
-    oppsite[1] = oppsite_hand[1]
-
-    while len(mycards) != 7:
-        share_card = heap.pop()
-        mycards.append(share_card)
-        oppsite.append(share_card)
-
-    max_val_hand, max_val = select_largest(mycards, LOOKUPTABLE)
-    oppsite_val_hand, oppsite_max_val = select_largest(oppsite, LOOKUPTABLE)
+    max_val_hand, max_val = select_largest(shared_card + new_card + mycards, LOOKUPTABLE)
+    oppsite_val_hand, oppsite_max_val = select_largest(shared_card + new_card + oppsite_cards, LOOKUPTABLE)
     return max_val > oppsite_max_val
+
+
+def calculate_win_rate(shared_cards, my_cards, oppsite_card_range=None,
+                        nsamples=1000): 
+    ''' 
+        shared_card :
+        my_car
+        oppsite_card_range
+
+    '''
+    deck = list(range(0, 52))
+    for card in shared_cards:
+        deck.remove(card)
+    for card in my_cards:
+        deck.remove(card)
+
+    # for i, oppsite_cards in enumerate(oppsite_card_range):
+    #     valid = True
+    #     for card in oppsite_cards:
+    #         if card in cards:
+    #             valid = False
+    #             break
+    #     valid_ls.append(valid)
+    # if nsamples > len(oppsite_card_range):
+        # nsamples = len(oppsite_card_range)
+    win_list = []
+    for _ in range(nsamples):
+        if oppsite_card_range:
+            oppsite_cards = random.choice(oppsite_card_range)
+        else:
+            oppsite_cards = random.sample(deck, 2)
+        if (oppsite_cards[0] in shared_cards or oppsite_cards[0] in my_cards
+            or oppsite_cards[1] in shared_cards or oppsite_cards[1] in my_cards):
+            continue
+
+        need_append = []
+        if oppsite_cards[0] in deck:
+            deck.remove(oppsite_cards[0])
+            need_append.append(oppsite_cards[0])
+        if oppsite_cards[1] in deck:
+            deck.remove(oppsite_cards[1])
+            need_append.append(oppsite_cards[1])
+    
+        win_list.append(MonteCarlo_compare(deck, shared_cards, my_cards, oppsite_cards))
+        for card in need_append:
+            deck.append(card)
+    if len(win_list) == 0:
+        return 0.5
+    win_rate = np.mean(win_list)
+    return win_rate
+
 
 
 def test():

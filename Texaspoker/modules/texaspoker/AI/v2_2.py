@@ -13,8 +13,8 @@ import numpy as np
 import pandas as pd
 from lib.card_value import aka_pair, card_encoding_5
 from lib.client_lib import Decision, Hand, Player, State
-from lib.read_lookup_table import (PAIR_LEVEL_DICT, MonteCarlo,
-                                   MonteCarlo_compare, read_pair_level)
+from lib.read_lookup_table import (PAIR_LEVEL_DICT, read_pair_level,
+                                calculate_win_rate)
 
 
 class PLAYER_INFO:
@@ -117,31 +117,6 @@ def gen_nowturn_actions(nowturn, state):
             action = 'allin'
         actions.append([action, _amount, _actionNum])
     return actions
-
-
-def calculate_win_rate(cards, oppsite_card_range):
-
-    remain_card = list(range(0, 52))
-    for x in cards:
-        remain_card.pop(remain_card.index(x))
-
-    valid_ls = []
-
-    for i, oppsite_cards in enumerate(oppsite_card_range):
-        valid = True
-        for card in oppsite_cards:
-            if card in cards:
-                valid = False
-                break
-        valid_ls.append(valid)
-
-    oppsite_card_range = [oppsite_card_range[i]
-                          for i in range(len(oppsite_card_range)) if valid_ls[i]]
-    # 模拟发牌10000次
-
-    win_rate = np.mean([MonteCarlo_compare(remain_card[:], cards[:], oppsite_card_range)
-                        for i in range(10000)])
-    return win_rate
 
 
 '''
@@ -267,7 +242,7 @@ def ai(id, state):
             global_player_info, username).pair_range for username in nowturn_play_info_name]
         oppsite_card_range = reduce(list.__add__, oppsite_card_range)
         print(f'oppsite_card:{len(oppsite_card_range)}')
-        win_rate = calculate_win_rate(cards, oppsite_card_range)
+        win_rate = calculate_win_rate(state.sharedcards, state.player[id].cards, oppsite_card_range)
         
         if allin_num == 1:
             raise_threshold = 1
@@ -298,7 +273,7 @@ def ai(id, state):
 
     if decision.giveup == 1 and (delta == 0): ##不需要筹码，肯定进
         decision.callbet = 1
-        decision.giveup = 1
+        decision.giveup = 0
         
     if decision.callbet == 1 and delta == state.player[state.currpos].money:
         decision.callbet = 0
