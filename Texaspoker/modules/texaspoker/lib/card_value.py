@@ -148,8 +148,6 @@ def select_largest(all_cards, lookup_table):
     select the largest from 5, 6 or 7 cards
     
     '''
-    LENGTH = 2598960
-
     if len(all_cards) < 5:
         raise ValueError("Cards number is less then 5")
     max_val = -1
@@ -160,7 +158,7 @@ def select_largest(all_cards, lookup_table):
         if val > max_val:
             max_val = val
             max_val_hand = hand
-    return max_val_hand, max_val / LENGTH
+    return max_val_hand, max_val
 
 
 def read_lookup_table(filename="lookup_table.pkl"):
