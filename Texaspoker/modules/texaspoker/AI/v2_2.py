@@ -299,7 +299,7 @@ def ai(id, state):
             raise_threshold = 1
 
         elif raise_num == 0:
-            raise_threshold = 0.55
+            raise_threshold = 0.6
         elif raise_num == 1:
             raise_threshold = 0.8
         elif raise_num >= 2:
@@ -321,9 +321,9 @@ def ai(id, state):
         raise_smooth = np.array([0.33, 0.5, 0.7, 1, 1.5, 2])
         if win_rate > raise_threshold:
             ratio = (1-win_rate)/(2*win_rate-1)
-            ratio = min(ratio, 2)
+            # ratio = min(ratio, 2)
 
-            ratio = raise_smooth[(ratio >= raise_smooth).sum()]
+            ratio = raise_smooth[(ratio > raise_smooth).sum()]
             alpha = ratio*(pot+delta)  # 打弃牌率？
             alpha = max((alpha//state.bigBlind) * state.bigBlind, last_raised)
             decision.raisebet = 1
