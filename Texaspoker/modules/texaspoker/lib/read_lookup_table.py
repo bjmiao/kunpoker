@@ -2,7 +2,7 @@
 Author: bmiao
 Date: 2021-01-15 15:12:59
 LastEditors: zgong
-LastEditTime: 2021-01-23 23:20:14
+LastEditTime: 2021-01-24 13:24:43
 '''
 import pickle
 import random
@@ -11,15 +11,14 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-
+# from card_value import (aka_pair, card2id, card_encoding_5, id2card,
+#                          read_lookup_table, select_largest, card_encoding_2)
 from .card_value import (aka_pair, card2id, card_encoding_5, id2card,
-                         read_lookup_table, select_largest,card_encoding_2)
+                         read_lookup_table, select_largest, card_encoding_2)
 
-LENGTH = 2598960
 PAIR_LEVEL = pd.read_csv(Path(__file__).parent/'pair_level.csv', index_col=0)
 
 LOOKUPTABLE = read_lookup_table()
-
 
 def read_pair_level(pairs):
     aka = aka_pair(pairs)
@@ -43,27 +42,45 @@ def gen_level_dict():
 PAIR_LEVEL_DICT = gen_level_dict()
 
 
-def select_largest(all_cards, lookup_table):
-    if len(all_cards) < 5:
-        raise ValueError("Cards number is less then 5")
-    max_val = -1
-    max_val_hand = None
-    for hand in combinations(all_cards, 5):
-        hand = sorted(hand)
-        val = lookup_table[card_encoding_5(hand)]
-        if val > max_val:
-            max_val = val
-            max_val_hand = hand
-    return max_val_hand, max_val / LENGTH
+def get_card_range(shared_card, remain_card_range = None, threshold=0.3, nsamples=1000):
+    ''' given shared card, return the strongests hands'''
+    deck = list(range(52))
+    for card in shared_card:
+        deck.remove(card)
+
+    hand_value_pair = []
+    # for hand in [(12,16)]:
+    if (remain_card_range):
+        card_iter = combinations(deck, 2)
+    else:
+        card_iter = remain_card_range
+    for hand in card_iter:
+        deck.remove(hand[0])
+        deck.remove(hand[1])
+        value_list = []
+        for _ in range(nsamples):
+            value = MonteCarlo(deck, list(shared_card)+list(hand))
+            value_list.append(value)
+        # if (hand == (12, 16)):
+        #     print(value_list)
+        hand_value = np.median(value_list)
+        hand_value_pair.append((hand_value, hand))
+        deck.append(hand[0])
+        deck.append(hand[1])
+
+    # print(hand_value_pair[:10])
+    hand_value_pair = sorted(hand_value_pair, reverse=True)
+    # print(hand_value_pair)
+    return hand_value_pair[:int(threshold*len(hand_value_pair))]
 
 
 def MonteCarlo(heap, mycards):
-    random.shuffle(heap)
-    while len(mycards) != 7:
-        mycards.append(heap.pop())
-    max_val_hand, max_val = select_largest(mycards, LOOKUPTABLE)
+    ''' Monte Carlo single time'''
+    #print(heap, mycards)
+    need_card = 7 - len(mycards)
+    new_card = random.sample(heap, need_card)
+    max_val_hand, max_val = select_largest(new_card + list(mycards), LOOKUPTABLE)
     return max_val
-
 
 def MonteCarlo_compare(heap, mycards, oppsite_card_range=[]):
     random.shuffle(heap)
