@@ -2,7 +2,7 @@
 Author: zgong
 Date: 2021-01-15 15:19:34
 LastEditors: zgong
-LastEditTime: 2021-01-24 10:58:23
+LastEditTime: 2021-01-24 12:46:18
 '''
 import copy
 import pickle
@@ -32,7 +32,7 @@ global_player_info = PLAYER_INFO()
 class PlayerInfo():
     def __init__(self, player):
         self.update(player)
-        self.global_info = {}
+        self.global_info = {} #style
         self.action_history = []
         self.actions = {0: [], 1: [], 2: [], 3: []}
         self.pair_power = 0
@@ -47,12 +47,12 @@ class PlayerInfo():
         self.pair_power = 0
         self.pair_range = []
 
-    def update(self, player):
-        self.username = player.username     # username, 'unknown' is unknown
-        self.init_money = player.init_money  # init money
-        self.inited = player.inited
+    def update(self, player,first=False):
+        if first:
+            self.username = player.username     # username, 'unknown' is unknown
+            self.init_money = player.init_money  # init money
+            self.inited = player.inited
         self.money = player.money      # money player remains
-        # if the player is active(haven't giveups)
         self.active = player.active
         self.bet = player.bet            # the bet in this round
         self.cards = player.cards         # private cards
@@ -67,6 +67,7 @@ class PlayerInfo():
 
     def update_pair_range(self):
         # TODO
+        
         if self.active:
             self.pair_range = PAIR_LEVEL_DICT[1] + \
                 PAIR_LEVEL_DICT[2]+PAIR_LEVEL_DICT[3]+PAIR_LEVEL_DICT[4]
@@ -185,7 +186,7 @@ def ai(id, state):
                 play_info = PlayerInfo(player)
                 setattr(global_player_info, username, play_info)
                 play_info = getattr(global_player_info, username)
-            play_info.update(player)
+            play_info.update(player,first=True)
             play_info.refresh()
             play_info.update_action(pos, nowturn_actions, player_actions[pos])
             if play_info.active:
@@ -194,6 +195,7 @@ def ai(id, state):
         for pos, player in enumerate(state.player):
             username = player.username
             play_info = getattr(global_player_info, username)
+            play_info.update(player)
             play_info.update_action(pos, nowturn_actions, player_actions[pos])
             if play_info.active:
                 nowturn_play_info_name.append(username)
